@@ -50,9 +50,7 @@ export default function RenderPage({
       {page.layout === "stage" && (
         <SiteFooter site={ctx.site} lang={ctx.lang} overlay />
       )}
-      {page.layout === "intro" && (
-        <SiteFooter site={ctx.site} lang={ctx.lang} minimal />
-      )}
+      {/* intro (index) je brez noge in podpisa: izjema po Davidovi pisni odobritvi, 20. 10. 2026 */}
       <ValidityGuard />
     </LinkLabelsProvider>
   );
