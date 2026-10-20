@@ -15,7 +15,11 @@
       "id": "contact",
       "type": "contact",
       "heading": "Got a project? Let's talk!",
-      "sub": "Start a Conversation"
+      "sub": "Start a Conversation",
+      "illustration": {
+        "src": "/uploads/tiger.webp",
+        "alt": "White line drawing of a leaping winged tiger"
+      }
     }
   ]
 }

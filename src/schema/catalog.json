@@ -1466,13 +1466,17 @@
     {
       "type": "contact",
       "name": "Kontakt",
-      "description": "Velik poziv (heading), podnaslov in kontaktni podatki iz site.json (e-pošta, telefon, kraj). Blok nima polj za e-pošto ali telefon: te spremeniš v site.json.contact.",
+      "description": "Velik poziv (heading), podnaslov in kontaktni podatki iz site.json (e-pošta, telefon, kraj). Blok nima polj za e-pošto ali telefon: te spremeniš v site.json.contact. Neobvezna illustration je bela linijska risba (npr. tiger), ki se na svetlem ozadju izriše temno in rahlo lebdi.",
       "whenToUse": "Na strani contact. Za spremembo e-naslova ali telefona uredi site.json, ne tega bloka.",
       "example": {
         "id": "contact",
         "type": "contact",
         "heading": "Got a project? Let's talk!",
-        "sub": "Start a Conversation"
+        "sub": "Start a Conversation",
+        "illustration": {
+          "src": "/uploads/tiger.webp",
+          "alt": "Line drawing of a leaping winged tiger"
+        }
       },
       "schema": {
         "type": "object",
@@ -1494,6 +1498,44 @@
             "type": "string",
             "minLength": 1,
             "maxLength": 80
+          },
+          "illustration": {
+            "type": "object",
+            "properties": {
+              "src": {
+                "type": "string",
+                "pattern": "^\\/uploads\\/[a-z0-9\\-_./]+\\.(jpg|jpeg|png|webp|avif|svg)$"
+              },
+              "alt": {
+                "allOf": [
+                  {
+                    "type": "string",
+                    "minLength": 1,
+                    "maxLength": 150
+                  },
+                  {
+                    "type": "string",
+                    "minLength": 3
+                  }
+                ]
+              },
+              "focal": {
+                "type": "string",
+                "enum": [
+                  "center",
+                  "top",
+                  "bottom",
+                  "left",
+                  "right"
+                ],
+                "default": "center"
+              }
+            },
+            "required": [
+              "src",
+              "alt"
+            ],
+            "additionalProperties": false
           }
         },
         "required": [

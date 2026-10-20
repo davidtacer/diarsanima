@@ -1,5 +1,5 @@
 import { z } from "zod";
-import { id, shortText } from "@/schema/common";
+import { id, image, shortText } from "@/schema/common";
 
 export const contactSchema = z
   .object({
@@ -7,6 +7,8 @@ export const contactSchema = z
     type: z.literal("contact"),
     heading: shortText(60),
     sub: shortText(80).optional(),
+    /** Neobvezna linijska ilustracija (bela na prosojnem), na platnu se izriše temno. */
+    illustration: image.optional(),
   })
   .strict();
 export type ContactBlock = z.infer<typeof contactSchema>;
