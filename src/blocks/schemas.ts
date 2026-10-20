@@ -5,6 +5,7 @@ import { contactSchema } from "./Contact/schema";
 import { ctaSchema } from "./Cta/schema";
 import { gallerySchema } from "./Gallery/schema";
 import { glitchIntroSchema } from "./GlitchIntro/schema";
+import { logosSchema } from "./Logos/schema";
 import { noticeSchema } from "./Notice/schema";
 import { pageHeadingSchema } from "./PageHeading/schema";
 import { shatterMenuSchema } from "./ShatterMenu/schema";
@@ -25,6 +26,7 @@ export const blockSchemas = {
   contact: contactSchema,
   cta: ctaSchema,
   notice: noticeSchema,
+  logos: logosSchema,
 } as const;
 
 export type BlockType = keyof typeof blockSchemas;

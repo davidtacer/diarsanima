@@ -16,6 +16,9 @@ import { gallerySchema } from "./Gallery/schema";
 import GlitchIntro from "./GlitchIntro/GlitchIntro";
 import { meta as glitchIntroMeta } from "./GlitchIntro/meta";
 import { glitchIntroSchema } from "./GlitchIntro/schema";
+import Logos from "./Logos/Logos";
+import { meta as logosMeta } from "./Logos/meta";
+import { logosSchema } from "./Logos/schema";
 import Notice from "./Notice/Notice";
 import { meta as noticeMeta } from "./Notice/meta";
 import { noticeSchema } from "./Notice/schema";
@@ -41,6 +44,7 @@ export const blocks = {
   contact: { Component: Contact, schema: contactSchema, meta: contactMeta },
   cta: { Component: Cta, schema: ctaSchema, meta: ctaMeta },
   notice: { Component: Notice, schema: noticeSchema, meta: noticeMeta },
+  logos: { Component: Logos, schema: logosSchema, meta: logosMeta },
 } as const;
 
 /** Bloki, ki izrišejo <h1> strani (na strani je lahko samo eden). */

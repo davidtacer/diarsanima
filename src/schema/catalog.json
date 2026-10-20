@@ -1,5 +1,5 @@
 {
-  "generated": "npm run catalog",
+  "generated": "yarn catalog",
   "site": {
     "type": "object",
     "properties": {
@@ -1236,14 +1236,20 @@
     {
       "type": "text",
       "name": "Besedilo",
-      "description": "Odstavki besedila z neobveznim naslovom razdelka. Podpira omejen Markdown: **krepko**, *ležeče* (izriše se v pisavi Bodoni), povezave [besedilo](page:slug) ali https://, alineje. Varianta lead je večja in svetlejša (uvod), body je navadno besedilo.",
-      "whenToUse": "Za opise, biografijo, izobrazbo, uvode v razdelke.",
+      "description": "Odstavki besedila z neobveznim naslovom razdelka. Podpira omejen Markdown: **krepko**, *ležeče* (izriše se v pisavi Bodoni), povezave [besedilo](page:slug) ali https://, alineje (- ). Varianta lead je večja in svetlejša (uvod), body je navadno besedilo. Neobvezno: slika ob besedilu (image, imageSide left/right) in podpis umetnice pod besedilom (showSignature).",
+      "whenToUse": "Za opise, biografijo, izobrazbo, uvode v razdelke. Za besedilo s fotografijo ob strani dodaj image.",
       "example": {
         "id": "bio",
         "type": "text",
         "heading": "Education",
         "body": "Academy of Fine Arts and Design, *University of Ljubljana*.",
-        "variant": "body"
+        "variant": "body",
+        "image": {
+          "src": "/uploads/artist-portrait.webp",
+          "alt": "Collage portrait of a woman with a pink rose and wings"
+        },
+        "imageSide": "right",
+        "showSignature": true
       },
       "schema": {
         "type": "object",
@@ -1273,6 +1279,56 @@
               "body"
             ],
             "default": "body"
+          },
+          "image": {
+            "type": "object",
+            "properties": {
+              "src": {
+                "type": "string",
+                "pattern": "^\\/uploads\\/[a-z0-9\\-_./]+\\.(jpg|jpeg|png|webp|avif|svg)$"
+              },
+              "alt": {
+                "allOf": [
+                  {
+                    "type": "string",
+                    "minLength": 1,
+                    "maxLength": 150
+                  },
+                  {
+                    "type": "string",
+                    "minLength": 3
+                  }
+                ]
+              },
+              "focal": {
+                "type": "string",
+                "enum": [
+                  "center",
+                  "top",
+                  "bottom",
+                  "left",
+                  "right"
+                ],
+                "default": "center"
+              }
+            },
+            "required": [
+              "src",
+              "alt"
+            ],
+            "additionalProperties": false
+          },
+          "imageSide": {
+            "type": "string",
+            "enum": [
+              "left",
+              "right"
+            ],
+            "default": "right"
+          },
+          "showSignature": {
+            "type": "boolean",
+            "default": false
           }
         },
         "required": [
@@ -1583,6 +1639,112 @@
           "id",
           "type",
           "text"
+        ],
+        "additionalProperties": false,
+        "$schema": "http://json-schema.org/draft-07/schema#"
+      }
+    },
+    {
+      "type": "logos",
+      "name": "Logotipi",
+      "description": "Vrsta logotipov (šole, partnerji, razstavišča) v enotni sivi barvi, ki se ob prehodu z miško obarvajo. Vsak logotip ima sliko z alt (ime ustanove) in neobvezno povezavo https://.",
+      "whenToUse": "Za ustanove, kjer je umetnica študirala, ali partnerje in galerije, s katerimi sodeluje.",
+      "example": {
+        "id": "schools",
+        "type": "logos",
+        "items": [
+          {
+            "id": "aluo",
+            "image": {
+              "src": "/uploads/logos/aluo.webp",
+              "alt": "Academy of Fine Arts and Design, University of Ljubljana"
+            }
+          }
+        ]
+      },
+      "schema": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "pattern": "^[a-z0-9]+(-[a-z0-9]+)*$"
+          },
+          "type": {
+            "type": "string",
+            "const": "logos"
+          },
+          "heading": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 80
+          },
+          "items": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "id": {
+                  "type": "string",
+                  "pattern": "^[a-z0-9]+(-[a-z0-9]+)*$"
+                },
+                "image": {
+                  "type": "object",
+                  "properties": {
+                    "src": {
+                      "type": "string",
+                      "pattern": "^\\/uploads\\/[a-z0-9\\-_./]+\\.(jpg|jpeg|png|webp|avif|svg)$"
+                    },
+                    "alt": {
+                      "allOf": [
+                        {
+                          "type": "string",
+                          "minLength": 1,
+                          "maxLength": 150
+                        },
+                        {
+                          "type": "string",
+                          "minLength": 3
+                        }
+                      ]
+                    },
+                    "focal": {
+                      "type": "string",
+                      "enum": [
+                        "center",
+                        "top",
+                        "bottom",
+                        "left",
+                        "right"
+                      ],
+                      "default": "center"
+                    }
+                  },
+                  "required": [
+                    "src",
+                    "alt"
+                  ],
+                  "additionalProperties": false
+                },
+                "url": {
+                  "type": "string",
+                  "format": "uri",
+                  "pattern": "^https:\\/\\/"
+                }
+              },
+              "required": [
+                "id",
+                "image"
+              ],
+              "additionalProperties": false
+            },
+            "minItems": 1,
+            "maxItems": 16
+          }
+        },
+        "required": [
+          "id",
+          "type",
+          "items"
         ],
         "additionalProperties": false,
         "$schema": "http://json-schema.org/draft-07/schema#"

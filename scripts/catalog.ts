@@ -11,6 +11,7 @@ import { meta as contact } from "../src/blocks/Contact/meta";
 import { meta as cta } from "../src/blocks/Cta/meta";
 import { meta as gallery } from "../src/blocks/Gallery/meta";
 import { meta as glitchIntro } from "../src/blocks/GlitchIntro/meta";
+import { meta as logos } from "../src/blocks/Logos/meta";
 import { meta as notice } from "../src/blocks/Notice/meta";
 import { meta as pageHeading } from "../src/blocks/PageHeading/meta";
 import { meta as shatterMenu } from "../src/blocks/ShatterMenu/meta";
@@ -18,7 +19,7 @@ import { meta as text } from "../src/blocks/Text/meta";
 import { blockSchemas } from "../src/blocks/schemas";
 import { siteSchema } from "../src/schema/site";
 
-const metas = { glitchIntro, shatterMenu, catalogue, gallery, pageHeading, text, cards, contact, cta, notice };
+const metas = { glitchIntro, shatterMenu, catalogue, gallery, pageHeading, text, cards, contact, cta, notice, logos };
 
 const catalog = {
   generated: "yarn catalog",
