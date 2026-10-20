@@ -1,0 +1,80 @@
+{
+  "slug": "about-artist",
+  "title": "About Artist",
+  "layout": "paper",
+  "seo": {
+    "description": "DiArsanima (DiA), multidisciplinary visual artist from Maribor: painting, digital art and murals."
+  },
+  "blocks": [
+    {
+      "id": "heading",
+      "type": "pageHeading",
+      "heading": "About Artist",
+      "lead": "Welcome to the artistic landscape of DiArsanima!"
+    },
+    {
+      "id": "bio",
+      "type": "text",
+      "variant": "lead",
+      "body": "DiArsanima, or *DiA*, is a multidisciplinary visual artist building a collection of archetypes through traditional and digital methods. Her portraits of imagined and real women carry symbols drawn from ancestry, ritual and myth, set in contemporary life."
+    },
+    {
+      "id": "fields",
+      "type": "text",
+      "heading": "Fields of work",
+      "body": "- Classical old and new master techniques in oils, acrylics and mixed media\n- Digital art, graphic design and illustration\n- Large-scale work: murals, interior and exterior wall paintings"
+    },
+    {
+      "id": "services",
+      "type": "cards",
+      "heading": "Services I Craft for My Clients",
+      "lead": "Turning Imagination into Masterpieces",
+      "items": [
+        {
+          "id": "commission-work",
+          "title": "Commission Work",
+          "description": "Murals, portraits, landscapes and animals.",
+          "image": {
+            "src": "/uploads/services/commission-work.webp",
+            "alt": "Painted portrait of an elderly woman"
+          },
+          "page": "contact"
+        },
+        {
+          "id": "courses",
+          "title": "Courses, Workshops, Mentorship",
+          "description": "Creating, painting and drawing.",
+          "image": {
+            "src": "/uploads/services/courses.webp",
+            "alt": "Painting of a hare"
+          },
+          "page": "contact"
+        },
+        {
+          "id": "digital-art",
+          "title": "Digital Art, Graphic Design, Illustration",
+          "image": {
+            "src": "/uploads/services/digital-art.webp",
+            "alt": "Illustration of ducks"
+          },
+          "page": "contact"
+        }
+      ]
+    },
+    {
+      "id": "education",
+      "type": "text",
+      "heading": "Education",
+      "body": "- BA in Industrial Design, Academy of Fine Arts and Design, University of Ljubljana\n- BA and MA in Painting, Academy of Fine Arts and Design, University of Ljubljana\n- Winchester School of Art, United Kingdom\n- Faculty of Fine Arts, Lisbon, Portugal\n- Balinese painting community, Pengosekan, Indonesia\n- Angel Art Academy, Florence, Italy\n- Pedagogy and andragogy, Faculty of Education, University of Maribor"
+    },
+    {
+      "id": "commission-cta",
+      "type": "cta",
+      "text": "A portrait, a mural, an animal you love.",
+      "sub": "Commission work · portraits · murals · animals",
+      "sealText": "✦ COMMISSIONS OPEN ✦ LET'S TALK ✦ PORTRAITS ✦ MURALS ",
+      "sealLabel": "Commissions open, contact the artist",
+      "page": "contact"
+    }
+  ]
+}

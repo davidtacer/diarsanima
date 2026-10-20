@@ -1,0 +1,1592 @@
+{
+  "generated": "npm run catalog",
+  "site": {
+    "type": "object",
+    "properties": {
+      "name": {
+        "type": "string",
+        "minLength": 1,
+        "maxLength": 60
+      },
+      "tagline": {
+        "type": "string",
+        "minLength": 1,
+        "maxLength": 120
+      },
+      "url": {
+        "type": "string",
+        "format": "uri",
+        "pattern": "^https:\\/\\/"
+      },
+      "defaultLanguage": {
+        "type": "string",
+        "pattern": "^[a-z]{2}$"
+      },
+      "languages": {
+        "type": "array",
+        "items": {
+          "type": "string",
+          "pattern": "^[a-z]{2}$"
+        },
+        "minItems": 1,
+        "maxItems": 6
+      },
+      "person": {
+        "type": "object",
+        "properties": {
+          "jobTitle": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 80
+          },
+          "knowsAbout": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 60
+            },
+            "maxItems": 10,
+            "default": []
+          }
+        },
+        "required": [
+          "jobTitle"
+        ],
+        "additionalProperties": false
+      },
+      "contact": {
+        "type": "object",
+        "properties": {
+          "email": {
+            "type": "string",
+            "format": "email"
+          },
+          "phone": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 30
+          },
+          "address": {
+            "type": "object",
+            "properties": {
+              "street": {
+                "type": "string",
+                "minLength": 1,
+                "maxLength": 80
+              },
+              "postalCode": {
+                "type": "string",
+                "minLength": 1,
+                "maxLength": 12
+              },
+              "city": {
+                "type": "string",
+                "minLength": 1,
+                "maxLength": 60
+              },
+              "country": {
+                "type": "string",
+                "pattern": "^[A-Z]{2}$"
+              }
+            },
+            "required": [
+              "city",
+              "country"
+            ],
+            "additionalProperties": false
+          }
+        },
+        "required": [
+          "email",
+          "address"
+        ],
+        "additionalProperties": false
+      },
+      "navigation": {
+        "type": "array",
+        "items": {
+          "type": "object",
+          "properties": {
+            "id": {
+              "type": "string",
+              "pattern": "^[a-z0-9]+(-[a-z0-9]+)*$"
+            },
+            "label": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 30
+            },
+            "page": {
+              "type": "string",
+              "pattern": "^[a-z0-9-]+$"
+            }
+          },
+          "required": [
+            "id",
+            "label",
+            "page"
+          ],
+          "additionalProperties": false
+        },
+        "minItems": 1,
+        "maxItems": 8
+      },
+      "social": {
+        "type": "array",
+        "items": {
+          "type": "object",
+          "properties": {
+            "id": {
+              "type": "string",
+              "pattern": "^[a-z0-9]+(-[a-z0-9]+)*$"
+            },
+            "type": {
+              "type": "string",
+              "enum": [
+                "instagram",
+                "facebook"
+              ]
+            },
+            "url": {
+              "type": "string",
+              "format": "uri"
+            }
+          },
+          "required": [
+            "id",
+            "type",
+            "url"
+          ],
+          "additionalProperties": false
+        },
+        "maxItems": 6
+      },
+      "brand": {
+        "type": "object",
+        "properties": {
+          "logo": {
+            "type": "object",
+            "properties": {
+              "src": {
+                "type": "string",
+                "pattern": "^\\/uploads\\/[a-z0-9\\-_./]+\\.(jpg|jpeg|png|webp|avif|svg)$"
+              },
+              "alt": {
+                "allOf": [
+                  {
+                    "type": "string",
+                    "minLength": 1,
+                    "maxLength": 150
+                  },
+                  {
+                    "type": "string",
+                    "minLength": 3
+                  }
+                ]
+              },
+              "focal": {
+                "type": "string",
+                "enum": [
+                  "center",
+                  "top",
+                  "bottom",
+                  "left",
+                  "right"
+                ],
+                "default": "center"
+              }
+            },
+            "required": [
+              "src",
+              "alt"
+            ],
+            "additionalProperties": false
+          },
+          "logoLarge": {
+            "type": "object",
+            "properties": {
+              "src": {
+                "type": "string",
+                "pattern": "^\\/uploads\\/[a-z0-9\\-_./]+\\.(jpg|jpeg|png|webp|avif|svg)$"
+              },
+              "alt": {
+                "allOf": [
+                  {
+                    "type": "string",
+                    "minLength": 1,
+                    "maxLength": 150
+                  },
+                  {
+                    "type": "string",
+                    "minLength": 3
+                  }
+                ]
+              },
+              "focal": {
+                "type": "string",
+                "enum": [
+                  "center",
+                  "top",
+                  "bottom",
+                  "left",
+                  "right"
+                ],
+                "default": "center"
+              }
+            },
+            "required": [
+              "src",
+              "alt"
+            ],
+            "additionalProperties": false
+          },
+          "seal": {
+            "type": "object",
+            "properties": {
+              "src": {
+                "type": "string",
+                "pattern": "^\\/uploads\\/[a-z0-9\\-_./]+\\.(jpg|jpeg|png|webp|avif|svg)$"
+              },
+              "alt": {
+                "allOf": [
+                  {
+                    "type": "string",
+                    "minLength": 1,
+                    "maxLength": 150
+                  },
+                  {
+                    "type": "string",
+                    "minLength": 3
+                  }
+                ]
+              },
+              "focal": {
+                "type": "string",
+                "enum": [
+                  "center",
+                  "top",
+                  "bottom",
+                  "left",
+                  "right"
+                ],
+                "default": "center"
+              }
+            },
+            "required": [
+              "src",
+              "alt"
+            ],
+            "additionalProperties": false
+          },
+          "watermark": {
+            "type": "object",
+            "properties": {
+              "src": {
+                "type": "string",
+                "pattern": "^\\/uploads\\/[a-z0-9\\-_./]+\\.(jpg|jpeg|png|webp|avif|svg)$"
+              },
+              "alt": {
+                "allOf": [
+                  {
+                    "type": "string",
+                    "minLength": 1,
+                    "maxLength": 150
+                  },
+                  {
+                    "type": "string",
+                    "minLength": 3
+                  }
+                ]
+              },
+              "focal": {
+                "type": "string",
+                "enum": [
+                  "center",
+                  "top",
+                  "bottom",
+                  "left",
+                  "right"
+                ],
+                "default": "center"
+              }
+            },
+            "required": [
+              "src",
+              "alt"
+            ],
+            "additionalProperties": false
+          },
+          "signature": {
+            "type": "object",
+            "properties": {
+              "src": {
+                "type": "string",
+                "pattern": "^\\/uploads\\/[a-z0-9\\-_./]+\\.(jpg|jpeg|png|webp|avif|svg)$"
+              },
+              "alt": {
+                "allOf": [
+                  {
+                    "type": "string",
+                    "minLength": 1,
+                    "maxLength": 150
+                  },
+                  {
+                    "type": "string",
+                    "minLength": 3
+                  }
+                ]
+              },
+              "focal": {
+                "type": "string",
+                "enum": [
+                  "center",
+                  "top",
+                  "bottom",
+                  "left",
+                  "right"
+                ],
+                "default": "center"
+              }
+            },
+            "required": [
+              "src",
+              "alt"
+            ],
+            "additionalProperties": false
+          }
+        },
+        "required": [
+          "logo",
+          "logoLarge",
+          "seal",
+          "watermark",
+          "signature"
+        ],
+        "additionalProperties": false
+      },
+      "seo": {
+        "type": "object",
+        "properties": {
+          "titleTemplate": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 80
+          },
+          "defaultDescription": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 160
+          },
+          "schemaType": {
+            "type": "string",
+            "enum": [
+              "Person",
+              "ArtGallery",
+              "LocalBusiness"
+            ],
+            "default": "Person"
+          }
+        },
+        "required": [
+          "titleTemplate",
+          "defaultDescription"
+        ],
+        "additionalProperties": false
+      },
+      "theme": {
+        "type": "object",
+        "properties": {
+          "preset": {
+            "type": "string",
+            "enum": [
+              "diarsanima"
+            ]
+          }
+        },
+        "required": [
+          "preset"
+        ],
+        "additionalProperties": false
+      },
+      "ui": {
+        "type": "object",
+        "properties": {
+          "back": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 20
+          },
+          "enter": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 20
+          },
+          "skipToContent": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 40
+          },
+          "language": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 20
+          },
+          "notFoundHome": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 40
+          }
+        },
+        "required": [
+          "back",
+          "enter",
+          "skipToContent",
+          "language",
+          "notFoundHome"
+        ],
+        "additionalProperties": false
+      }
+    },
+    "required": [
+      "name",
+      "tagline",
+      "url",
+      "defaultLanguage",
+      "languages",
+      "person",
+      "contact",
+      "navigation",
+      "social",
+      "brand",
+      "seo",
+      "theme",
+      "ui"
+    ],
+    "additionalProperties": false,
+    "$schema": "http://json-schema.org/draft-07/schema#"
+  },
+  "blocks": [
+    {
+      "type": "glitchIntro",
+      "name": "Intro z glitch animacijo",
+      "description": "Celozaslonski uvod: slika ozadja z naključnimi vodoravnimi glitch trakovi, linijski tiger na sredini, logotip in povezava (npr. »Explore?«). Naslov (heading) je skrit, bere ga samo iskalnik in bralnik zaslona.",
+      "whenToUse": "Samo na intro strani (index). Ko stranka želi zamenjati sliko ozadja, tigra ali besedilo/cilj povezave pod logotipom.",
+      "example": {
+        "id": "intro",
+        "type": "glitchIntro",
+        "heading": "DiArsanima – a showcase of mystical and human-inspired art.",
+        "background": {
+          "src": "/uploads/intro-banner.webp",
+          "alt": "Painted desert under a swirling red and blue sky"
+        },
+        "tiger": {
+          "src": "/uploads/tiger.webp",
+          "alt": "Line drawing of a winged tiger"
+        },
+        "tigerMobile": {
+          "src": "/uploads/tiger-mobile.webp",
+          "alt": "Line drawing of a winged tiger"
+        },
+        "exploreLabel": "Explore?",
+        "explorePage": "home"
+      },
+      "schema": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "pattern": "^[a-z0-9]+(-[a-z0-9]+)*$"
+          },
+          "type": {
+            "type": "string",
+            "const": "glitchIntro"
+          },
+          "heading": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 120
+          },
+          "background": {
+            "type": "object",
+            "properties": {
+              "src": {
+                "type": "string",
+                "pattern": "^\\/uploads\\/[a-z0-9\\-_./]+\\.(jpg|jpeg|png|webp|avif|svg)$"
+              },
+              "alt": {
+                "allOf": [
+                  {
+                    "type": "string",
+                    "minLength": 1,
+                    "maxLength": 150
+                  },
+                  {
+                    "type": "string",
+                    "minLength": 3
+                  }
+                ]
+              },
+              "focal": {
+                "type": "string",
+                "enum": [
+                  "center",
+                  "top",
+                  "bottom",
+                  "left",
+                  "right"
+                ],
+                "default": "center"
+              }
+            },
+            "required": [
+              "src",
+              "alt"
+            ],
+            "additionalProperties": false
+          },
+          "tiger": {
+            "type": "object",
+            "properties": {
+              "src": {
+                "type": "string",
+                "pattern": "^\\/uploads\\/[a-z0-9\\-_./]+\\.(jpg|jpeg|png|webp|avif|svg)$"
+              },
+              "alt": {
+                "allOf": [
+                  {
+                    "type": "string",
+                    "minLength": 1,
+                    "maxLength": 150
+                  },
+                  {
+                    "type": "string",
+                    "minLength": 3
+                  }
+                ]
+              },
+              "focal": {
+                "type": "string",
+                "enum": [
+                  "center",
+                  "top",
+                  "bottom",
+                  "left",
+                  "right"
+                ],
+                "default": "center"
+              }
+            },
+            "required": [
+              "src",
+              "alt"
+            ],
+            "additionalProperties": false
+          },
+          "tigerMobile": {
+            "type": "object",
+            "properties": {
+              "src": {
+                "type": "string",
+                "pattern": "^\\/uploads\\/[a-z0-9\\-_./]+\\.(jpg|jpeg|png|webp|avif|svg)$"
+              },
+              "alt": {
+                "allOf": [
+                  {
+                    "type": "string",
+                    "minLength": 1,
+                    "maxLength": 150
+                  },
+                  {
+                    "type": "string",
+                    "minLength": 3
+                  }
+                ]
+              },
+              "focal": {
+                "type": "string",
+                "enum": [
+                  "center",
+                  "top",
+                  "bottom",
+                  "left",
+                  "right"
+                ],
+                "default": "center"
+              }
+            },
+            "required": [
+              "src",
+              "alt"
+            ],
+            "additionalProperties": false
+          },
+          "exploreLabel": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 24
+          },
+          "explorePage": {
+            "type": "string",
+            "pattern": "^[a-z0-9-]+$"
+          }
+        },
+        "required": [
+          "id",
+          "type",
+          "heading",
+          "background",
+          "tiger",
+          "tigerMobile",
+          "exploreLabel",
+          "explorePage"
+        ],
+        "additionalProperties": false,
+        "$schema": "http://json-schema.org/draft-07/schema#"
+      }
+    },
+    {
+      "type": "shatterMenu",
+      "name": "Portret, ki se razbije v meni",
+      "description": "Celozaslonski portret z velikim logotipom in okroglim gumbom. Klik na gumb razbije portret v ploščice in pokaže velik meni (links). Gumb za nazaj uporabi site.ui.back. Naslov (heading) je skrit, bere ga samo iskalnik.",
+      "whenToUse": "Samo na strani home. Ko stranka želi zamenjati portret, besedilo gumba ali povezave v velikem meniju (največ 6, kratke).",
+      "example": {
+        "id": "portrait-menu",
+        "type": "shatterMenu",
+        "heading": "DiArsanima – mystical and human-inspired art",
+        "portrait": {
+          "src": "/uploads/home-portrait.webp",
+          "alt": "Oil portrait of a woman in a leather jacket",
+          "focal": "top"
+        },
+        "exploreLabel": "Explore",
+        "links": [
+          {
+            "id": "artwork",
+            "label": "Artwork",
+            "page": "artwork"
+          }
+        ]
+      },
+      "schema": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "pattern": "^[a-z0-9]+(-[a-z0-9]+)*$"
+          },
+          "type": {
+            "type": "string",
+            "const": "shatterMenu"
+          },
+          "heading": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 120
+          },
+          "portrait": {
+            "type": "object",
+            "properties": {
+              "src": {
+                "type": "string",
+                "pattern": "^\\/uploads\\/[a-z0-9\\-_./]+\\.(jpg|jpeg|png|webp|avif|svg)$"
+              },
+              "alt": {
+                "allOf": [
+                  {
+                    "type": "string",
+                    "minLength": 1,
+                    "maxLength": 150
+                  },
+                  {
+                    "type": "string",
+                    "minLength": 3
+                  }
+                ]
+              },
+              "focal": {
+                "type": "string",
+                "enum": [
+                  "center",
+                  "top",
+                  "bottom",
+                  "left",
+                  "right"
+                ],
+                "default": "center"
+              }
+            },
+            "required": [
+              "src",
+              "alt"
+            ],
+            "additionalProperties": false
+          },
+          "exploreLabel": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 14
+          },
+          "links": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "id": {
+                  "type": "string",
+                  "pattern": "^[a-z0-9]+(-[a-z0-9]+)*$"
+                },
+                "label": {
+                  "type": "string",
+                  "minLength": 1,
+                  "maxLength": 22
+                },
+                "page": {
+                  "type": "string",
+                  "pattern": "^[a-z0-9-]+$"
+                }
+              },
+              "required": [
+                "id",
+                "label",
+                "page"
+              ],
+              "additionalProperties": false
+            },
+            "minItems": 1,
+            "maxItems": 6
+          }
+        },
+        "required": [
+          "id",
+          "type",
+          "heading",
+          "portrait",
+          "exploreLabel",
+          "links"
+        ],
+        "additionalProperties": false,
+        "$schema": "http://json-schema.org/draft-07/schema#"
+      }
+    },
+    {
+      "type": "catalogue",
+      "name": "Katalog sklopov",
+      "description": "Stran v slogu muzejskega kataloga. Levo katalogni list (eyebrow, podatki facts, uvodno besedilo intro, podpis umetnice, samodejno kazalo), desno velik naslov iz dveh besed (pokončna + ležeča) in vrstice sklopov. Vsak sklop ima rimsko številko, naslov, povezavo na stran sklopa, 2–3 kratke oznake (meta), opombo, sličice (plates) in delo, ki se ob prehodu z miško dvigne (feature). Sličice in feature so sklici na dela iz bloka gallery na strani sklopa ({ page, work }). Spodaj neobvezen poziv za naročila z vrtečim se pečatom (commission).",
+      "whenToUse": "Na strani artwork. Ko stranka želi spremeniti uvodno besedilo, zamenjati sličice ali izpostavljeno delo sklopa, dodati sklop ali spremeniti poziv za naročila. Novo delo najprej dodaj v galerijo na strani sklopa, nato ga tu navedi po id-ju.",
+      "example": {
+        "id": "catalogue",
+        "type": "catalogue",
+        "heading": {
+          "upright": "Art",
+          "italic": "work"
+        },
+        "eyebrow": "Catalogue · vol. ii",
+        "facts": [
+          {
+            "id": "based",
+            "label": "Based",
+            "value": "Maribor, Slovenia"
+          }
+        ],
+        "intro": "Where *mythical creations* meet portraiture.",
+        "sections": [
+          {
+            "id": "paintings",
+            "numeral": "I",
+            "title": "Paintings",
+            "page": "paintings",
+            "meta": [
+              "oil on canvas"
+            ],
+            "note": "portraits and archetypes",
+            "plates": [
+              {
+                "page": "paintings",
+                "work": "slavic"
+              }
+            ],
+            "feature": {
+              "page": "paintings",
+              "work": "slavic"
+            }
+          }
+        ]
+      },
+      "schema": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "pattern": "^[a-z0-9]+(-[a-z0-9]+)*$"
+          },
+          "type": {
+            "type": "string",
+            "const": "catalogue"
+          },
+          "heading": {
+            "type": "object",
+            "properties": {
+              "upright": {
+                "type": "string",
+                "minLength": 1,
+                "maxLength": 12
+              },
+              "italic": {
+                "type": "string",
+                "minLength": 1,
+                "maxLength": 12
+              }
+            },
+            "required": [
+              "upright",
+              "italic"
+            ],
+            "additionalProperties": false
+          },
+          "eyebrow": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 40
+          },
+          "facts": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "id": {
+                  "type": "string",
+                  "pattern": "^[a-z0-9]+(-[a-z0-9]+)*$"
+                },
+                "label": {
+                  "type": "string",
+                  "minLength": 1,
+                  "maxLength": 16
+                },
+                "value": {
+                  "type": "string",
+                  "minLength": 1,
+                  "maxLength": 80
+                }
+              },
+              "required": [
+                "id",
+                "label",
+                "value"
+              ],
+              "additionalProperties": false
+            },
+            "maxItems": 6,
+            "default": []
+          },
+          "intro": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 700
+          },
+          "showSignature": {
+            "type": "boolean",
+            "default": true
+          },
+          "subLeft": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 60
+          },
+          "subRight": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 60
+          },
+          "sections": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "id": {
+                  "type": "string",
+                  "pattern": "^[a-z0-9]+(-[a-z0-9]+)*$"
+                },
+                "numeral": {
+                  "type": "string",
+                  "minLength": 1,
+                  "maxLength": 6
+                },
+                "title": {
+                  "type": "string",
+                  "minLength": 1,
+                  "maxLength": 24
+                },
+                "page": {
+                  "type": "string",
+                  "pattern": "^[a-z0-9-]+$"
+                },
+                "meta": {
+                  "type": "array",
+                  "items": {
+                    "type": "string",
+                    "minLength": 1,
+                    "maxLength": 32
+                  },
+                  "maxItems": 3,
+                  "default": []
+                },
+                "note": {
+                  "type": "string",
+                  "minLength": 1,
+                  "maxLength": 60
+                },
+                "plates": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "page": {
+                        "type": "string",
+                        "pattern": "^[a-z0-9-]+$"
+                      },
+                      "work": {
+                        "type": "string",
+                        "pattern": "^[a-z0-9]+(-[a-z0-9]+)*$"
+                      }
+                    },
+                    "required": [
+                      "page",
+                      "work"
+                    ],
+                    "additionalProperties": false
+                  },
+                  "minItems": 1,
+                  "maxItems": 6
+                },
+                "feature": {
+                  "type": "object",
+                  "properties": {
+                    "page": {
+                      "type": "string",
+                      "pattern": "^[a-z0-9-]+$"
+                    },
+                    "work": {
+                      "type": "string",
+                      "pattern": "^[a-z0-9]+(-[a-z0-9]+)*$"
+                    }
+                  },
+                  "required": [
+                    "page",
+                    "work"
+                  ],
+                  "additionalProperties": false
+                }
+              },
+              "required": [
+                "id",
+                "numeral",
+                "title",
+                "page",
+                "plates"
+              ],
+              "additionalProperties": false
+            },
+            "minItems": 1,
+            "maxItems": 6
+          },
+          "commission": {
+            "type": "object",
+            "properties": {
+              "text": {
+                "type": "string",
+                "minLength": 1,
+                "maxLength": 70
+              },
+              "sub": {
+                "type": "string",
+                "minLength": 1,
+                "maxLength": 80
+              },
+              "sealText": {
+                "type": "string",
+                "minLength": 1,
+                "maxLength": 70
+              },
+              "sealLabel": {
+                "type": "string",
+                "minLength": 1,
+                "maxLength": 80
+              },
+              "page": {
+                "type": "string",
+                "pattern": "^[a-z0-9-]+$"
+              }
+            },
+            "required": [
+              "text",
+              "sealText",
+              "sealLabel",
+              "page"
+            ],
+            "additionalProperties": false
+          }
+        },
+        "required": [
+          "id",
+          "type",
+          "heading",
+          "eyebrow",
+          "intro",
+          "sections"
+        ],
+        "additionalProperties": false,
+        "$schema": "http://json-schema.org/draft-07/schema#"
+      }
+    },
+    {
+      "type": "gallery",
+      "name": "Galerija del",
+      "description": "Mreža umetniških del kot slike na steni (paspartu, senca). Vsako delo ima številko, naslov, podatke (mere, tehnika, kraj, leto) in sliko. Dela so lahko razdeljena v skupine z oznako (npr. Digital Collages).",
+      "whenToUse": "Na straneh posameznih sklopov (paintings, digital-artwork, murals). Ko stranka doda, odstrani ali preimenuje delo, spremeni mere ali vrstni red. Na dela se sklicuje blok catalogue (po id-ju dela), zato id dela ne spreminjaj, če je uporabljen v katalogu.",
+      "example": {
+        "id": "paintings",
+        "type": "gallery",
+        "groups": [
+          {
+            "id": "oil",
+            "works": [
+              {
+                "id": "slavic",
+                "number": "4",
+                "title": "SLAVIC",
+                "details": "100×80 cm, Oil on Canvas, Sinji vrh 2023",
+                "image": {
+                  "src": "/uploads/works/paintings/slavic.webp",
+                  "alt": "Oil portrait of a woman in a Slavic headdress"
+                }
+              }
+            ]
+          }
+        ]
+      },
+      "schema": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "pattern": "^[a-z0-9]+(-[a-z0-9]+)*$"
+          },
+          "type": {
+            "type": "string",
+            "const": "gallery"
+          },
+          "groups": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "id": {
+                  "type": "string",
+                  "pattern": "^[a-z0-9]+(-[a-z0-9]+)*$"
+                },
+                "label": {
+                  "type": "string",
+                  "minLength": 1,
+                  "maxLength": 80
+                },
+                "works": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "id": {
+                        "type": "string",
+                        "pattern": "^[a-z0-9]+(-[a-z0-9]+)*$"
+                      },
+                      "number": {
+                        "type": "string",
+                        "minLength": 1,
+                        "maxLength": 6
+                      },
+                      "title": {
+                        "type": "string",
+                        "minLength": 1,
+                        "maxLength": 60
+                      },
+                      "details": {
+                        "type": "string",
+                        "minLength": 1,
+                        "maxLength": 160
+                      },
+                      "image": {
+                        "type": "object",
+                        "properties": {
+                          "src": {
+                            "type": "string",
+                            "pattern": "^\\/uploads\\/[a-z0-9\\-_./]+\\.(jpg|jpeg|png|webp|avif|svg)$"
+                          },
+                          "alt": {
+                            "allOf": [
+                              {
+                                "type": "string",
+                                "minLength": 1,
+                                "maxLength": 150
+                              },
+                              {
+                                "type": "string",
+                                "minLength": 3
+                              }
+                            ]
+                          },
+                          "focal": {
+                            "type": "string",
+                            "enum": [
+                              "center",
+                              "top",
+                              "bottom",
+                              "left",
+                              "right"
+                            ],
+                            "default": "center"
+                          }
+                        },
+                        "required": [
+                          "src",
+                          "alt"
+                        ],
+                        "additionalProperties": false
+                      }
+                    },
+                    "required": [
+                      "id",
+                      "number",
+                      "title",
+                      "details",
+                      "image"
+                    ],
+                    "additionalProperties": false
+                  },
+                  "minItems": 1,
+                  "maxItems": 60
+                }
+              },
+              "required": [
+                "id",
+                "works"
+              ],
+              "additionalProperties": false
+            },
+            "minItems": 1,
+            "maxItems": 4
+          }
+        },
+        "required": [
+          "id",
+          "type",
+          "groups"
+        ],
+        "additionalProperties": false,
+        "$schema": "http://json-schema.org/draft-07/schema#"
+      }
+    },
+    {
+      "type": "pageHeading",
+      "name": "Naslov strani",
+      "description": "Velik naslov podstrani (h1) s tanko črto pod njim, neobvezno rimsko številko sklopa in uvodnim besedilom (lead).",
+      "whenToUse": "Kot prvi blok na vsaki podstrani razen intro, home in artwork. Na strani je lahko samo en.",
+      "example": {
+        "id": "heading",
+        "type": "pageHeading",
+        "heading": "Paintings",
+        "numeral": "I",
+        "lead": "Portraits and archetypes in oil."
+      },
+      "schema": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "pattern": "^[a-z0-9]+(-[a-z0-9]+)*$"
+          },
+          "type": {
+            "type": "string",
+            "const": "pageHeading"
+          },
+          "heading": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 40
+          },
+          "numeral": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 6
+          },
+          "lead": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 500
+          }
+        },
+        "required": [
+          "id",
+          "type",
+          "heading"
+        ],
+        "additionalProperties": false,
+        "$schema": "http://json-schema.org/draft-07/schema#"
+      }
+    },
+    {
+      "type": "text",
+      "name": "Besedilo",
+      "description": "Odstavki besedila z neobveznim naslovom razdelka. Podpira omejen Markdown: **krepko**, *ležeče* (izriše se v pisavi Bodoni), povezave [besedilo](page:slug) ali https://, alineje. Varianta lead je večja in svetlejša (uvod), body je navadno besedilo.",
+      "whenToUse": "Za opise, biografijo, izobrazbo, uvode v razdelke.",
+      "example": {
+        "id": "bio",
+        "type": "text",
+        "heading": "Education",
+        "body": "Academy of Fine Arts and Design, *University of Ljubljana*.",
+        "variant": "body"
+      },
+      "schema": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "pattern": "^[a-z0-9]+(-[a-z0-9]+)*$"
+          },
+          "type": {
+            "type": "string",
+            "const": "text"
+          },
+          "heading": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 80
+          },
+          "body": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 4000
+          },
+          "variant": {
+            "type": "string",
+            "enum": [
+              "lead",
+              "body"
+            ],
+            "default": "body"
+          }
+        },
+        "required": [
+          "id",
+          "type",
+          "body"
+        ],
+        "additionalProperties": false,
+        "$schema": "http://json-schema.org/draft-07/schema#"
+      }
+    },
+    {
+      "type": "cards",
+      "name": "Kartice (storitve)",
+      "description": "Mreža kartic s sliko v paspartuju, naslovom, neobveznim opisom in neobvezno povezavo na stran. Naslov razdelka in uvodna vrstica sta neobvezna.",
+      "whenToUse": "Za storitve (naročila, delavnice, digitalna umetnost) ali katerikoli kratek seznam s slikami.",
+      "example": {
+        "id": "services",
+        "type": "cards",
+        "heading": "Services I Craft for My Clients",
+        "items": [
+          {
+            "id": "commission",
+            "title": "Commission Work",
+            "image": {
+              "src": "/uploads/services/commission-work.webp",
+              "alt": "Painted portrait of a grandmother"
+            }
+          }
+        ]
+      },
+      "schema": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "pattern": "^[a-z0-9]+(-[a-z0-9]+)*$"
+          },
+          "type": {
+            "type": "string",
+            "const": "cards"
+          },
+          "heading": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 80
+          },
+          "lead": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 160
+          },
+          "items": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "id": {
+                  "type": "string",
+                  "pattern": "^[a-z0-9]+(-[a-z0-9]+)*$"
+                },
+                "title": {
+                  "type": "string",
+                  "minLength": 1,
+                  "maxLength": 60
+                },
+                "image": {
+                  "type": "object",
+                  "properties": {
+                    "src": {
+                      "type": "string",
+                      "pattern": "^\\/uploads\\/[a-z0-9\\-_./]+\\.(jpg|jpeg|png|webp|avif|svg)$"
+                    },
+                    "alt": {
+                      "allOf": [
+                        {
+                          "type": "string",
+                          "minLength": 1,
+                          "maxLength": 150
+                        },
+                        {
+                          "type": "string",
+                          "minLength": 3
+                        }
+                      ]
+                    },
+                    "focal": {
+                      "type": "string",
+                      "enum": [
+                        "center",
+                        "top",
+                        "bottom",
+                        "left",
+                        "right"
+                      ],
+                      "default": "center"
+                    }
+                  },
+                  "required": [
+                    "src",
+                    "alt"
+                  ],
+                  "additionalProperties": false
+                },
+                "description": {
+                  "type": "string",
+                  "minLength": 1,
+                  "maxLength": 300
+                },
+                "page": {
+                  "type": "string",
+                  "pattern": "^[a-z0-9-]+$"
+                }
+              },
+              "required": [
+                "id",
+                "title",
+                "image"
+              ],
+              "additionalProperties": false
+            },
+            "minItems": 1,
+            "maxItems": 12
+          }
+        },
+        "required": [
+          "id",
+          "type",
+          "items"
+        ],
+        "additionalProperties": false,
+        "$schema": "http://json-schema.org/draft-07/schema#"
+      }
+    },
+    {
+      "type": "contact",
+      "name": "Kontakt",
+      "description": "Velik poziv (heading), podnaslov in kontaktni podatki iz site.json (e-pošta, telefon, kraj). Blok nima polj za e-pošto ali telefon: te spremeniš v site.json.contact.",
+      "whenToUse": "Na strani contact. Za spremembo e-naslova ali telefona uredi site.json, ne tega bloka.",
+      "example": {
+        "id": "contact",
+        "type": "contact",
+        "heading": "Got a project? Let's talk!",
+        "sub": "Start a Conversation"
+      },
+      "schema": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "pattern": "^[a-z0-9]+(-[a-z0-9]+)*$"
+          },
+          "type": {
+            "type": "string",
+            "const": "contact"
+          },
+          "heading": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 60
+          },
+          "sub": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 80
+          }
+        },
+        "required": [
+          "id",
+          "type",
+          "heading"
+        ],
+        "additionalProperties": false,
+        "$schema": "http://json-schema.org/draft-07/schema#"
+      }
+    },
+    {
+      "type": "cta",
+      "name": "Poziv s pečatom",
+      "description": "Vrstica s curki barve, poševnim pozivom (text), drobnim podnaslovom in vrtečim se pečatom (sealText teče v krogu). Pečat vodi na izbrano stran. sealLabel je opis povezave za bralnike zaslona.",
+      "whenToUse": "Za poziv k naročilu ali kontaktu na koncu podstrani.",
+      "example": {
+        "id": "commission-cta",
+        "type": "cta",
+        "text": "A portrait, a mural, an animal you love.",
+        "sub": "Commission work · portraits · murals · animals",
+        "sealText": "✦ COMMISSIONS OPEN ✦ LET'S TALK ✦ PORTRAITS ✦ MURALS ",
+        "sealLabel": "Commissions open, contact the artist",
+        "page": "contact"
+      },
+      "schema": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "pattern": "^[a-z0-9]+(-[a-z0-9]+)*$"
+          },
+          "type": {
+            "type": "string",
+            "const": "cta"
+          },
+          "text": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 70
+          },
+          "sub": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 80
+          },
+          "sealText": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 70
+          },
+          "sealLabel": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 80
+          },
+          "page": {
+            "type": "string",
+            "pattern": "^[a-z0-9-]+$"
+          }
+        },
+        "required": [
+          "id",
+          "type",
+          "text",
+          "sealText",
+          "sealLabel",
+          "page"
+        ],
+        "additionalProperties": false,
+        "$schema": "http://json-schema.org/draft-07/schema#"
+      }
+    },
+    {
+      "type": "notice",
+      "name": "Obvestilo",
+      "description": "Tanka vrstica z obvestilom (npr. razstava, odprtje, počitnice) z neobvezno povezavo. Z validFrom/validUntil (YYYY-MM-DD) se prikaže samo v tem obdobju. Varianta accent je v rožnati barvi.",
+      "whenToUse": "Za časovno omejena sporočila. Postavi ga na začetek strani.",
+      "example": {
+        "id": "exhibition",
+        "type": "notice",
+        "text": "New exhibition at the Maribor Art Gallery, opening 5 December.",
+        "link": {
+          "label": "Contact",
+          "page": "contact"
+        },
+        "variant": "accent",
+        "validUntil": "2026-12-31"
+      },
+      "schema": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "pattern": "^[a-z0-9]+(-[a-z0-9]+)*$"
+          },
+          "type": {
+            "type": "string",
+            "const": "notice"
+          },
+          "text": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 160
+          },
+          "link": {
+            "type": "object",
+            "properties": {
+              "label": {
+                "type": "string",
+                "minLength": 1,
+                "maxLength": 30
+              },
+              "page": {
+                "type": "string",
+                "pattern": "^[a-z0-9-]+$"
+              }
+            },
+            "required": [
+              "label",
+              "page"
+            ],
+            "additionalProperties": false
+          },
+          "variant": {
+            "type": "string",
+            "enum": [
+              "quiet",
+              "accent"
+            ],
+            "default": "quiet"
+          },
+          "validFrom": {
+            "type": "string",
+            "format": "date"
+          },
+          "validUntil": {
+            "type": "string",
+            "format": "date"
+          }
+        },
+        "required": [
+          "id",
+          "type",
+          "text"
+        ],
+        "additionalProperties": false,
+        "$schema": "http://json-schema.org/draft-07/schema#"
+      }
+    }
+  ]
+}

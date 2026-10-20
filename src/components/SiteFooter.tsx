@@ -1,16 +1,14 @@
-import { socials } from "@/lib/site";
+import type { Site } from "@/schema/site";
 
-export function InstagramIcon() {
-  return (
-    <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" strokeWidth="2" aria-hidden>
-      <rect x="3" y="3" width="18" height="18" rx="5" />
-      <circle cx="12" cy="12" r="4" />
-      <circle cx="17.5" cy="6.5" r="0.8" fill="currentColor" />
-    </svg>
-  );
-}
-
-export function FacebookIcon() {
+function SocialIcon({ type }: { type: Site["social"][number]["type"] }) {
+  if (type === "instagram")
+    return (
+      <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" strokeWidth="2" aria-hidden>
+        <rect x="3" y="3" width="18" height="18" rx="5" />
+        <circle cx="12" cy="12" r="4" />
+        <circle cx="17.5" cy="6.5" r="0.8" fill="currentColor" />
+      </svg>
+    );
   return (
     <svg viewBox="0 0 24 24" width="14" height="14" fill="currentColor" aria-hidden>
       <path d="M12 2a10 10 0 0 0-1.56 19.88v-7H7.9V12h2.54V9.8c0-2.5 1.49-3.89 3.78-3.89 1.1 0 2.24.2 2.24.2v2.46h-1.26c-1.24 0-1.63.78-1.63 1.57V12h2.78l-.44 2.89h-2.34v7A10 10 0 0 0 12 2Z" />
@@ -18,8 +16,10 @@ export function FacebookIcon() {
   );
 }
 
-/** overlay: fiksna noga čez celozaslonske strani (/home). tone="paper": svetla tema podstrani. */
-export default function SiteFooter({ overlay = false, tone = "night" }: { overlay?: boolean; tone?: "night" | "paper" }) {
+const socialName = { instagram: "Instagram", facebook: "Facebook" } as const;
+
+/** overlay: fiksna noga čez celozaslonske strani. tone="paper": svetla tema podstrani. */
+export default function SiteFooter({ site, overlay = false, tone = "night" }: { site: Site; overlay?: boolean; tone?: "night" | "paper" }) {
   const paper = tone === "paper";
   return (
     <footer
@@ -28,23 +28,23 @@ export default function SiteFooter({ overlay = false, tone = "night" }: { overla
       } ${overlay ? "fixed inset-x-0 bottom-0 z-20" : "relative z-10"}`}
     >
       <div className="flex gap-[18px]">
-        {[
-          [socials.instagram, "Instagram", <InstagramIcon key="i" />],
-          [socials.facebook, "Facebook", <FacebookIcon key="f" />],
-        ].map(([href, label, icon]) => (
+        {site.social.map((s) => (
           <a
-            key={label as string}
-            href={href as string}
+            key={s.id}
+            href={s.url}
             target="_blank"
             rel="noopener noreferrer"
-            aria-label={label as string}
+            aria-label={socialName[s.type]}
             className={`${paper ? "text-char" : "text-bone"} opacity-85 transition-opacity hover:opacity-100`}
           >
-            {icon}
+            <SocialIcon type={s.type} />
           </a>
         ))}
       </div>
-      <p>© {new Date().getFullYear()} DiArsanima</p>
+      {/* letnica se izračuna ob buildu */}
+      <p>
+        © {new Date().getFullYear()} {site.name}
+      </p>
     </footer>
   );
 }

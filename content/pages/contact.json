@@ -1,0 +1,21 @@
+{
+  "slug": "contact",
+  "title": "Contact",
+  "layout": "paper",
+  "seo": {
+    "description": "Got a project? Contact DiArsanima for commissions, murals, portraits and workshops."
+  },
+  "blocks": [
+    {
+      "id": "heading",
+      "type": "pageHeading",
+      "heading": "Contact"
+    },
+    {
+      "id": "contact",
+      "type": "contact",
+      "heading": "Got a project? Let's talk!",
+      "sub": "Start a Conversation"
+    }
+  ]
+}

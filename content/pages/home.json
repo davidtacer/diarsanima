@@ -1,0 +1,43 @@
+{
+  "slug": "home",
+  "title": "Home",
+  "layout": "stage",
+  "seo": {
+    "description": "Enter the world of DiArsanima: paintings, digital artwork and murals."
+  },
+  "blocks": [
+    {
+      "id": "portrait-menu",
+      "type": "shatterMenu",
+      "heading": "DiArsanima – mystical and human-inspired art",
+      "portrait": {
+        "src": "/uploads/home-portrait.webp",
+        "alt": "Oil portrait of a blonde woman in a black leather jacket and white scarf, framed by ornamental panels",
+        "focal": "top"
+      },
+      "exploreLabel": "Explore",
+      "links": [
+        {
+          "id": "intro",
+          "label": "Intro page",
+          "page": "index"
+        },
+        {
+          "id": "artwork",
+          "label": "Artwork",
+          "page": "artwork"
+        },
+        {
+          "id": "about",
+          "label": "About Artist",
+          "page": "about-artist"
+        },
+        {
+          "id": "contact",
+          "label": "Contact",
+          "page": "contact"
+        }
+      ]
+    }
+  ]
+}

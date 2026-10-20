@@ -1,0 +1,97 @@
+{
+  "name": "DiArsanima",
+  "tagline": "a showcase of mystical and human-inspired art.",
+  "url": "https://diarsanima.com",
+  "defaultLanguage": "en",
+  "languages": [
+    "en"
+  ],
+  "person": {
+    "jobTitle": "Multidisciplinary visual artist",
+    "knowsAbout": [
+      "oil painting",
+      "portraiture",
+      "digital collage",
+      "murals",
+      "archetypes"
+    ]
+  },
+  "contact": {
+    "email": "info@diarsanima.com",
+    "address": {
+      "city": "Maribor",
+      "country": "SI"
+    }
+  },
+  "navigation": [
+    {
+      "id": "home",
+      "label": "Home",
+      "page": "home"
+    },
+    {
+      "id": "artwork",
+      "label": "Artwork",
+      "page": "artwork"
+    },
+    {
+      "id": "about",
+      "label": "About Artist",
+      "page": "about-artist"
+    },
+    {
+      "id": "contact",
+      "label": "Contact",
+      "page": "contact"
+    }
+  ],
+  "social": [
+    {
+      "id": "instagram",
+      "type": "instagram",
+      "url": "https://www.instagram.com/diarsanima/"
+    },
+    {
+      "id": "facebook",
+      "type": "facebook",
+      "url": "https://www.facebook.com/DonnaDiArsanima"
+    }
+  ],
+  "brand": {
+    "logo": {
+      "src": "/uploads/logo-small.webp",
+      "alt": "DiArsanima"
+    },
+    "logoLarge": {
+      "src": "/uploads/logo-large.webp",
+      "alt": "DiArsanima"
+    },
+    "seal": {
+      "src": "/uploads/seal.webp",
+      "alt": "DiArsanima seal: a woman's head with tentacles in a circle"
+    },
+    "watermark": {
+      "src": "/uploads/watermark.webp",
+      "alt": "DiArsanima vertical signature"
+    },
+    "signature": {
+      "src": "/uploads/signature.webp",
+      "alt": "DiA signature"
+    }
+  },
+  "seo": {
+    "titleTemplate": "%s – DiArsanima",
+    "defaultDescription": "DiArsanima – a showcase of mystical and human-inspired art.",
+    "schemaType": "Person"
+  },
+  "theme": {
+    "preset": "diarsanima"
+  },
+  "ui": {
+    "back": "Back",
+    "enter": "Enter",
+    "skipToContent": "Skip to content",
+    "language": "Language",
+    "notFoundHome": "Back to the intro"
+  }
+}
