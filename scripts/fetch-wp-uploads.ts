@@ -17,9 +17,15 @@ async function main() {
     const ext = path.extname(new URL(url).pathname) || ".png";
     const raw = target.replace(/\.webp$/, ext);
     fs.mkdirSync(path.dirname(raw), { recursive: true });
-    const res = await fetch(url);
-    if (!res.ok) {
-      console.warn("✗", local, res.status);
+    // WP strežnik (Cloudflare) občasno vrne 5xx, npr. 522 — poskusi do 4-krat z zamikom
+    let res: Response | undefined;
+    for (let attempt = 1; attempt <= 4; attempt++) {
+      res = await fetch(url).catch(() => undefined);
+      if (res?.ok || (res && res.status < 500)) break;
+      await new Promise((r) => setTimeout(r, attempt * 3000));
+    }
+    if (!res?.ok) {
+      console.warn("✗", local, res?.status ?? "napaka povezave", "— poženi ukaz znova");
       continue;
     }
     fs.writeFileSync(raw, Buffer.from(await res.arrayBuffer()));
