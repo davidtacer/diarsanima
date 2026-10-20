@@ -52,6 +52,8 @@ export const siteSchema = z
     ui: z
       .object({
         back: shortText(20),
+        menu: shortText(20),
+        close: shortText(20),
         enter: shortText(20),
         skipToContent: shortText(40),
         language: shortText(20),

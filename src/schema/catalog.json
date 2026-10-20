@@ -417,6 +417,16 @@
             "minLength": 1,
             "maxLength": 20
           },
+          "menu": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 20
+          },
+          "close": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 20
+          },
           "enter": {
             "type": "string",
             "minLength": 1,
@@ -440,6 +450,8 @@
         },
         "required": [
           "back",
+          "menu",
+          "close",
           "enter",
           "skipToContent",
           "language",

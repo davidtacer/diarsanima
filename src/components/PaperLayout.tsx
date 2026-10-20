@@ -3,6 +3,7 @@ import { srcOf } from "@/lib/images";
 import type { BlockContext } from "@/lib/types";
 import { hrefFor, getBaseSite } from "@/lib/content";
 import SiteFooter from "./SiteFooter";
+import MobileMenu from "./MobileMenu";
 import UploadImage from "./UploadImage";
 
 const roman = ["i", "ii", "iii", "iv", "v", "vi", "vii", "viii"];
@@ -39,11 +40,11 @@ export default function PaperLayout({
         {site.ui.skipToContent}
       </a>
 
-      <header className="relative z-10 flex items-center justify-between gap-6 px-[clamp(16px,4.5vw,64px)] py-8 max-md:flex-col max-md:items-start max-md:py-5">
+      <header className="relative z-10 flex items-center justify-between gap-6 px-[clamp(16px,4.5vw,64px)] py-8 max-md:py-5">
         <Link href={ctx.href("index")}>
-          <UploadImage image={site.brand.logo} sizes="150px" priority className="h-auto w-[150px] invert" />
+          <UploadImage image={site.brand.logo} sizes="150px" priority className="h-auto w-[150px] invert max-md:w-[124px]" />
         </Link>
-        <nav className="flex flex-wrap gap-x-9 gap-y-3 text-xs uppercase tracking-[0.28em] max-md:gap-x-4 max-md:text-[10px]">
+        <nav className="flex flex-wrap gap-x-9 gap-y-3 text-xs uppercase tracking-[0.28em] max-md:hidden">
           {site.navigation.map((n, i) => {
             const on = n.page === active;
             return (
@@ -81,6 +82,18 @@ export default function PaperLayout({
             </span>
           )}
         </nav>
+        <MobileMenu
+          menuLabel={site.ui.menu}
+          closeLabel={site.ui.close}
+          items={site.navigation.map((n, i) => ({
+            id: n.id,
+            label: n.label,
+            href: ctx.href(n.page),
+            numeral: roman[i].toUpperCase(),
+            active: n.page === active,
+          }))}
+          languages={languages.map((l) => ({ code: l, href: hrefFor(l, slug), active: l === ctx.lang }))}
+        />
       </header>
 
       <main id="main" className="relative z-10">

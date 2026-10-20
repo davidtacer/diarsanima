@@ -2,6 +2,7 @@
 
 > Ta datoteka je za **AI urejevalnik** (urejanje vsebine s pogovorom).
 > Agenti, ki gradijo ali spreminjajo kodo, morajo najprej prebrati **`docs/PRAVILA-GRADNJE.md`** in se ga držati.
+> Namestitev na Cloudflare Pages, domene in povezava z urejevalnikom: **`docs/NAMESTITEV-UREJEVALNIKA.md`**.
 
 ## Splošna pravila
 

@@ -29,6 +29,12 @@ yarn uploads public/uploads/<datoteka>   # nova slika → WebP + velikosti
 | `catalogue` | `/artwork` | ob prehodu z miško se delo "dvigne iz arhiva" |
 | kurzor | povsod | krožni pečat sledi miški |
 
+## Gostovanje
+
+Cloudflare Pages po **`docs/NAMESTITEV-UREJEVALNIKA.md`**: production branch `main`, preview samo `dev`, build `yarn build`, output `out`, `NODE_VERSION=22`.
+`scripts/postbuild.ts` glede na `CF_PAGES_BRANCH` zapiše `_headers`, `robots.txt` in sitemap (testna stran je skrita).
+Urejevalnik: `/uredi` (iframe na uredi.inzenirji.si, `SITE_ID` v `src/config/site-id.ts`).
+
 ## Git
 
 Gradnja na `build/diarsanima` → merge v `dev` → `main` (objava) po uspešnem CI (`.github/workflows/check.yml`).

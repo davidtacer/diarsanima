@@ -4,7 +4,9 @@ import type { Page } from "@/schema/page";
 import type { Site } from "@/schema/site";
 import { getBaseSite, hrefFor, listPages, makeContext } from "./content";
 
-export const isProduction = () => process.env.NEXT_PUBLIC_ENV === "production";
+/** Produkcija: Cloudflare gradi vejo main (CF_PAGES_BRANCH) ali lokalno NEXT_PUBLIC_ENV=production. */
+export const isProduction = () =>
+  process.env.CF_PAGES_BRANCH ? process.env.CF_PAGES_BRANCH === "main" : process.env.NEXT_PUBLIC_ENV === "production";
 
 export function pageMetadata(page: Page, site: Site, lang: string): Metadata {
   const base = getBaseSite();

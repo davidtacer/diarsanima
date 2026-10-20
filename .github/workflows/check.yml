@@ -16,4 +16,4 @@ jobs:
       - run: yarn install --frozen-lockfile
       - run: yarn check
         env:
-          NEXT_PUBLIC_ENV: ${{ github.ref == 'refs/heads/main' && 'production' || 'dev' }}
+          CF_PAGES_BRANCH: ${{ github.ref_name }}

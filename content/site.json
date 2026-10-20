@@ -89,6 +89,8 @@
   },
   "ui": {
     "back": "Back",
+    "menu": "Menu",
+    "close": "Close",
     "enter": "Enter",
     "skipToContent": "Skip to content",
     "language": "Language",
