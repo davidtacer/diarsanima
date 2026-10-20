@@ -252,6 +252,23 @@ validUntil: z.string().date().optional(),
 - Polja obrazca so v JSON (`fields: [{ id, label, type: "text"|"email"|"tel"|"textarea"|"select", required }]`), da AI lahko doda polje.
 - Vdelave (zemljevid, rezervacijski sistem): blok z `provider: enum` in `id`/`url` po shemi. Nikoli poljuben `<iframe>` ali `<script>` iz vsebine.
 
+### 4.6 Povezave
+
+**Vsaka povezava, ki vodi ven s strani stranke, se odpre v novem zavihku.** Obiskovalec tako ostane na strani stranke.
+
+| Vrsta povezave | Primer | Obnašanje |
+| --- | --- | --- |
+| Zunanja (druga domena) | Instagram, Google zemljevid, rezervacijski sistem, podpis inzenirji.si | `target="_blank" rel="noopener"` |
+| Notranja | `page:meni`, `/en/kontakt`, sidro `#cenik` | isti zavihek |
+| Telefon, e-pošta | `tel:`, `mailto:` | isti zavihek, brez `target` |
+| Datoteka na strani | `/uploads/cenik.pdf` | `target="_blank"` (odpre se v brskalniku) |
+
+Pravila:
+- Vse povezave gredo prek ene komponente `src/components/SmartLink.tsx`, ki sama odloči po zgornji tabeli. Zunanja je vsaka povezava `http(s)://`, katere domena ni domena stranke.
+- Surov `<a href="https://...">` izven `SmartLink` je prepovedan; preverja ga lint pravilo (`no-restricted-syntax` za `JSXOpeningElement[name.name='a']` izven `SmartLink.tsx`).
+- Isto velja za povezave v `richText`: renderer jih izriše s `SmartLink`. V vsebini se `target` ne nastavlja, AI ga ne more pokvariti.
+- Zunanja povezava ima za bralnike zaslona dodatek »(odpre se v novem zavihku)« v jeziku strani, kot vizualno skrit tekst (`sr-only`).
+
 ---
 
 ## 5. Dizajn in tema
@@ -364,6 +381,7 @@ Dodatno ob predaji:
 - [ ] `catalog.json` posodobljen in commitan.
 - [ ] `CLAUDE.md` izpolnjen za stranko (sekcija 11).
 - [ ] Vse slike imajo smiseln `alt`, brez EXIF.
+- [ ] Vse zunanje povezave se odprejo v novem zavihku, notranje, `tel:` in `mailto:` v istem (sekcija 4.6).
 - [ ] Podpis v nogi (sekcija 12): pravilen datum, povezava z `?ref=<SITE_ID>`, hover deluje, na 390 px ena vrstica, kontrast ≥ 4,5 : 1.
 
 ---
@@ -409,6 +427,7 @@ Ob hoverju (ali fokusu s tipkovnico) se desno razširi: `Spletna stran, ki jo ur
 - Izračuna se ob buildu: `git log -1 --format=%cI` (Cloudflare pri buildu klonira repozitorij). Če ukaz ne uspe, uporabi čas builda.
 - Format po jeziku strani prek `Intl.DateTimeFormat` (`sl`: `18. 10. 2026`).
 - Na veji `dev` je enak mehanizem, da stranka na testni strani vidi, kako bo izgledalo.
+- Vsaka objava iz urejevalnika je merge na `main`, ki sproži nov build, zato se datum na pravi strani posodobi sam. Enako velja za razveljavitev (je nov commit) in za naše popravke na `main`. Sprememba, ki je samo na `dev` in ni objavljena, datuma na pravi strani ne spremeni.
 
 ### 12.3 Besedila po jezikih
 
@@ -428,6 +447,8 @@ Za jezik, ki ga ni v tabeli, uporabi angleščino in ga dodaj v tabelo v predlog
 ```tsx
 <a
   href={`https://inzenirji.si/?ref=${SITE_ID}`}
+  target="_blank"
+  rel="noopener"
   className="signature"
   aria-label="inzenirji.si – spletna stran, ki jo urejate s pogovorom"
 >
@@ -435,7 +456,7 @@ Za jezik, ki ga ni v tabeli, uporabi angleščino in ga dodaj v tabelo v predlog
 
 - `SITE_ID` iz `src/config/site-id.ts`. Po `ref` CRM prepozna, s katere strani stranke je prišel obiskovalec.
 - Besedilo povezave je samo ime znamke `inzenirji.si`. **Brez ključnih besed** (»izdelava spletnih strani« ipd.) v besedilu, `title` ali `aria-label` onkraj zgornjega, ker Google enake povezave s ključnimi besedami v nogah mnogih strani lahko oceni kot manipulacijo.
-- Brez `target="_blank"`, brez `nofollow`.
+- Odpre se v novem zavihku (`target="_blank" rel="noopener"`), kot vse zunanje povezave (sekcija 4.6). Brez `nofollow`.
 - Na `/uredi` podpisa ni (stran nima noge).
 
 ### 12.5 Primer komponente
@@ -457,7 +478,7 @@ export function Signature({ lang }: { lang: string }) {
   const date = new Intl.DateTimeFormat(lang, { day: "numeric", month: "numeric", year: "numeric" })
     .format(new Date(BUILD_UPDATED_AT));
   return (
-    <a href={`https://inzenirji.si/?ref=${SITE_ID}`} className="signature group inline-flex items-baseline gap-1.5 whitespace-nowrap text-xs opacity-60 hover:opacity-100 focus-visible:opacity-100">
+    <a href={`https://inzenirji.si/?ref=${SITE_ID}`} target="_blank" rel="noopener" className="signature group inline-flex items-baseline gap-1.5 whitespace-nowrap text-xs opacity-60 hover:opacity-100 focus-visible:opacity-100">
       <span aria-hidden className="text-signature">▌</span>
       <span className="max-sm:hidden">{s.updated} {date} ·</span>
       <span className="font-signature">inzenirji.si<span aria-hidden className="signature-cursor">_</span></span>

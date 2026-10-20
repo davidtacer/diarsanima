@@ -12,7 +12,11 @@ export const logosSchema = z
           .object({
             id,
             image,
-            url: z.string().url().regex(/^https:\/\//).optional(),
+            url: z
+              .string()
+              .url()
+              .regex(/^https:\/\//)
+              .optional(),
           })
           .strict(),
       )

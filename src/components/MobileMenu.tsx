@@ -1,8 +1,8 @@
 "use client";
 
-import Link from "next/link";
 import { useEffect, useState } from "react";
 import { createPortal } from "react-dom";
+import SmartLink from "@/components/SmartLink";
 
 type Item = {
   id: string;
@@ -90,7 +90,7 @@ export default function MobileMenu({
                     key={item.id}
                     className="overflow-hidden border-b border-rule pb-4"
                   >
-                    <Link
+                    <SmartLink
                       href={item.href}
                       tabIndex={open ? 0 : -1}
                       aria-current={item.active ? "page" : undefined}
@@ -122,7 +122,7 @@ export default function MobileMenu({
                           ✦
                         </span>
                       )}
-                    </Link>
+                    </SmartLink>
                   </li>
                 ))}
               </ul>
@@ -131,7 +131,7 @@ export default function MobileMenu({
             {languages && languages.length > 1 && (
               <div className="relative flex gap-5 text-xs uppercase tracking-[0.28em]">
                 {languages.map((l) => (
-                  <Link
+                  <SmartLink
                     key={l.code}
                     href={l.href}
                     hrefLang={l.code}
@@ -140,7 +140,7 @@ export default function MobileMenu({
                     className={l.active ? "text-char" : "text-char-soft"}
                   >
                     {l.code}
-                  </Link>
+                  </SmartLink>
                 ))}
               </div>
             )}

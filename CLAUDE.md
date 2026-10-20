@@ -12,6 +12,7 @@
 - Domače strani `content/pages/index.json` ne briši.
 - Vsak blok in element seznama ima stabilen `id` (kebab-case). Obstoječih `id` ne spreminjaj brez razloga.
 - Slike: samo lokalne iz `/uploads/`, vedno z opisnim `alt` (angleško). Novo sliko pripravi z `yarn uploads public/uploads/<pot>`.
+- Povezav ne odpiraj "v novem zavihku" ročno: zunanje se odprejo v novem zavihku same, notranje (`page:slug`), `mailto:` in `tel:` v istem.
 - Brez HTML-ja, skript ali barv v vsebini. Brez tujih logotipov, nezakonitih vsebin in osebnih podatkov brez soglasja.
 - Kontakt (e-pošta, telefon, kraj) je samo v `content/site.json` → `contact`. Bloki ga berejo od tam.
 - Letnice v nogi ne piši: izračuna se sama.

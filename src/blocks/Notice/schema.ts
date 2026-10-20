@@ -6,7 +6,10 @@ export const noticeSchema = z
     id,
     type: z.literal("notice"),
     text: shortText(160),
-    link: z.object({ label: shortText(30), page: pageRef }).strict().optional(),
+    link: z
+      .object({ label: shortText(30), page: pageRef })
+      .strict()
+      .optional(),
     variant: z.enum(["quiet", "accent"]).default("quiet"),
     ...validity,
   })

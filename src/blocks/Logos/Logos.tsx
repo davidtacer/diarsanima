@@ -1,13 +1,20 @@
 import UploadImage from "@/components/UploadImage";
 import type { BlockProps } from "@/lib/types";
 import type { LogosBlock } from "./schema";
+import SmartLink from "@/components/SmartLink";
 
 export default function Logos({ block }: BlockProps<LogosBlock>) {
   const hid = `${block.id}-heading`;
   return (
-    <section aria-labelledby={block.heading ? hid : undefined} className="mb-[10vh] border-t border-rule pt-10">
+    <section
+      aria-labelledby={block.heading ? hid : undefined}
+      className="mb-[10vh] border-t border-rule pt-10"
+    >
       {block.heading && (
-        <h2 id={hid} className="mb-8 text-xs uppercase tracking-[0.28em] text-gold">
+        <h2
+          id={hid}
+          className="mb-8 text-xs uppercase tracking-[0.28em] text-gold"
+        >
           {block.heading}
         </h2>
       )}
@@ -21,14 +28,11 @@ export default function Logos({ block }: BlockProps<LogosBlock>) {
             />
           );
           return (
-            <li key={item.id} className="flex min-w-0 items-center justify-center">
-              {item.url ? (
-                <a href={item.url} target="_blank" rel="noopener noreferrer">
-                  {logo}
-                </a>
-              ) : (
-                logo
-              )}
+            <li
+              key={item.id}
+              className="flex min-w-0 items-center justify-center"
+            >
+              {item.url ? <SmartLink href={item.url}>{logo}</SmartLink> : logo}
             </li>
           );
         })}

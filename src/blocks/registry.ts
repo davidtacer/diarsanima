@@ -34,11 +34,27 @@ import { textSchema } from "./Text/schema";
 
 /** Vsi bloki, ki jih stran (in urejevalnik) pozna. */
 export const blocks = {
-  glitchIntro: { Component: GlitchIntro, schema: glitchIntroSchema, meta: glitchIntroMeta },
-  shatterMenu: { Component: ShatterMenu, schema: shatterMenuSchema, meta: shatterMenuMeta },
-  catalogue: { Component: Catalogue, schema: catalogueSchema, meta: catalogueMeta },
+  glitchIntro: {
+    Component: GlitchIntro,
+    schema: glitchIntroSchema,
+    meta: glitchIntroMeta,
+  },
+  shatterMenu: {
+    Component: ShatterMenu,
+    schema: shatterMenuSchema,
+    meta: shatterMenuMeta,
+  },
+  catalogue: {
+    Component: Catalogue,
+    schema: catalogueSchema,
+    meta: catalogueMeta,
+  },
   gallery: { Component: Gallery, schema: gallerySchema, meta: galleryMeta },
-  pageHeading: { Component: PageHeading, schema: pageHeadingSchema, meta: pageHeadingMeta },
+  pageHeading: {
+    Component: PageHeading,
+    schema: pageHeadingSchema,
+    meta: pageHeadingMeta,
+  },
   text: { Component: Text, schema: textSchema, meta: textMeta },
   cards: { Component: Cards, schema: cardsSchema, meta: cardsMeta },
   contact: { Component: Contact, schema: contactSchema, meta: contactMeta },
@@ -48,4 +64,9 @@ export const blocks = {
 } as const;
 
 /** Bloki, ki izrišejo <h1> strani (na strani je lahko samo eden). */
-export const headingBlocks = ["glitchIntro", "shatterMenu", "catalogue", "pageHeading"] as const;
+export const headingBlocks = [
+  "glitchIntro",
+  "shatterMenu",
+  "catalogue",
+  "pageHeading",
+] as const;

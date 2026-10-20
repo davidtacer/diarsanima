@@ -1,7 +1,7 @@
 "use client";
 
-import Link from "next/link";
 import { useEffect, useMemo, useRef, useState } from "react";
+import SmartLink from "@/components/SmartLink";
 
 const COLS = 6;
 const ROWS = 7;
@@ -64,7 +64,14 @@ type Props = {
   links: { id: string; label: string; href: string }[];
 };
 
-export default function ShatterStage({ heading, portrait, logo, exploreLabel, backLabel, links }: Props) {
+export default function ShatterStage({
+  heading,
+  portrait,
+  logo,
+  exploreLabel,
+  backLabel,
+  links,
+}: Props) {
   const [open, setOpen] = useState(false);
   const [box, setBox] = useState({ w: 0, h: 0 }); // velikost okvirja
   const [img, setImg] = useState({ w: 1080, h: 1559 }); // naravna velikost portreta
@@ -73,13 +80,16 @@ export default function ShatterStage({ heading, portrait, logo, exploreLabel, ba
 
   useEffect(() => {
     const el = new Image();
-    el.onload = () => el.naturalWidth && setImg({ w: el.naturalWidth, h: el.naturalHeight });
+    el.onload = () =>
+      el.naturalWidth && setImg({ w: el.naturalWidth, h: el.naturalHeight });
     el.src = portrait;
   }, [portrait]);
 
   useEffect(() => {
     if (!frame.current) return;
-    const ro = new ResizeObserver(([e]) => setBox({ w: e.contentRect.width, h: e.contentRect.height }));
+    const ro = new ResizeObserver(([e]) =>
+      setBox({ w: e.contentRect.width, h: e.contentRect.height }),
+    );
     ro.observe(frame.current);
     return () => ro.disconnect();
   }, []);
@@ -101,12 +111,21 @@ export default function ShatterStage({ heading, portrait, logo, exploreLabel, ba
   const th = box.h / ROWS;
 
   return (
-    <div data-open={open} className="group fixed inset-0 overflow-hidden bg-ink">
+    <div
+      data-open={open}
+      className="group fixed inset-0 overflow-hidden bg-ink"
+    >
       <h1 className="sr-only">{heading}</h1>
       {/* okvir s portretom; logotip in gumb sta pozicionirana glede nanj */}
       <div className="absolute left-1/2 top-[52%] -translate-x-1/2 -translate-y-1/2">
-        <div ref={frame} className="relative h-[70vh] w-[min(44vw,640px)] animate-rise max-md:h-[58vh] max-md:w-[86vw]">
-          <div className="absolute inset-0 grid grid-cols-6 grid-rows-7" aria-hidden>
+        <div
+          ref={frame}
+          className="relative h-[70vh] w-[min(44vw,640px)] animate-rise max-md:h-[58vh] max-md:w-[86vw]"
+        >
+          <div
+            className="absolute inset-0 grid grid-cols-6 grid-rows-7"
+            aria-hidden
+          >
             {tiles.map((t, i) => {
               const d = open ? t.delay : MAX_DELAY - t.delay;
               return (
@@ -114,7 +133,9 @@ export default function ShatterStage({ heading, portrait, logo, exploreLabel, ba
                   key={i}
                   className="relative will-change-[transform,opacity]"
                   style={{
-                    transform: open ? `translate3d(${t.dx}vw, ${t.dy}vh, 0) scale(${t.scale})` : "none",
+                    transform: open
+                      ? `translate3d(${t.dx}vw, ${t.dy}vh, 0) scale(${t.scale})`
+                      : "none",
                     opacity: open ? t.dim : 1,
                     filter: open ? "brightness(0.8) saturate(0.9)" : "none",
                     boxShadow: open ? "0 0 0 1px #000" : "none",
@@ -177,16 +198,18 @@ export default function ShatterStage({ heading, portrait, logo, exploreLabel, ba
         <ul className="text-center">
           {links.map((item, i) => (
             <li key={item.id} className="overflow-hidden leading-none">
-              <Link
+              <SmartLink
                 href={item.href}
                 tabIndex={open ? 0 : -1}
                 style={{
-                  transitionDelay: open ? `${0.7 + i * 0.09}s, ${0.7 + i * 0.09}s, ${0.7 + i * 0.09}s, 0s, 0s` : "0s",
+                  transitionDelay: open
+                    ? `${0.7 + i * 0.09}s, ${0.7 + i * 0.09}s, ${0.7 + i * 0.09}s, 0s, 0s`
+                    : "0s",
                 }}
                 className="inline-block origin-bottom translate-y-[110%] scale-y-[1.28] px-[0.1em] py-[0.12em] font-display text-[clamp(42px,6.4vh,72px)] font-bold uppercase leading-[1.02] tracking-[0.01em] text-bone opacity-0 blur-sm transition-[translate,opacity,filter,letter-spacing,text-shadow] duration-[1000ms,900ms,900ms,500ms,300ms] ease-out-expo hover:tracking-[0.08em] hover:text-white hover:text-glow group-data-[open=false]:duration-[500ms,300ms,300ms,500ms,300ms] group-data-[open=false]:ease-shatter group-data-[open=true]:translate-y-0 group-data-[open=true]:opacity-100 group-data-[open=true]:blur-none max-md:text-[clamp(34px,10vw,52px)]"
               >
                 {item.label}
-              </Link>
+              </SmartLink>
             </li>
           ))}
         </ul>
@@ -199,7 +222,6 @@ export default function ShatterStage({ heading, portrait, logo, exploreLabel, ba
           {backLabel}
         </button>
       </nav>
-
     </div>
   );
 }

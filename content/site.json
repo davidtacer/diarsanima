@@ -94,6 +94,7 @@
     "enter": "Enter",
     "skipToContent": "Skip to content",
     "language": "Language",
-    "notFoundHome": "Back to the intro"
+    "notFoundHome": "Back to the intro",
+    "newTab": "(opens in a new tab)"
   }
 }

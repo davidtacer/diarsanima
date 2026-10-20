@@ -1,7 +1,7 @@
-import Link from "next/link";
 import { isActiveNow } from "@/lib/validity";
 import type { BlockProps } from "@/lib/types";
 import type { NoticeBlock } from "./schema";
+import SmartLink from "@/components/SmartLink";
 
 const variants = {
   quiet: "border-rule text-char-soft",
@@ -19,11 +19,16 @@ export default function Notice({ block, ctx }: BlockProps<NoticeBlock>) {
       <span className="text-ochre" aria-hidden>
         ✦
       </span>
-      <span className="min-w-0 flex-1 normal-case tracking-normal break-words font-display text-base italic">{block.text}</span>
+      <span className="min-w-0 flex-1 normal-case tracking-normal break-words font-display text-base italic">
+        {block.text}
+      </span>
       {block.link && (
-        <Link href={ctx.href(block.link.page)} className="border-b border-current">
+        <SmartLink
+          href={ctx.href(block.link.page)}
+          className="border-b border-current"
+        >
           {block.link.label}
-        </Link>
+        </SmartLink>
       )}
     </aside>
   );

@@ -1,7 +1,7 @@
 "use client";
 
-import Link from "next/link";
 import { useEffect, useRef } from "react";
+import SmartLink from "@/components/SmartLink";
 
 const STRIPS = 6;
 
@@ -18,7 +18,14 @@ type Props = {
   explore: { label: string; href: string };
 };
 
-export default function GlitchStage({ heading, background, tiger, tigerMobile, logo, explore }: Props) {
+export default function GlitchStage({
+  heading,
+  background,
+  tiger,
+  tigerMobile,
+  logo,
+  explore,
+}: Props) {
   const strips = useRef<(HTMLDivElement | null)[]>([]);
   const art = useRef<HTMLDivElement>(null);
 
@@ -34,22 +41,43 @@ export default function GlitchStage({ heading, background, tiger, tigerMobile, l
       const shift = (Math.random() < 0.5 ? -1 : 1) * rand(8, 90);
       el.style.clipPath = `inset(${top}% 0 ${Math.max(0, 100 - top - h)}% 0)`;
       el.style.transform = `translate3d(${shift}px,0,0)`;
-      el.style.filter = Math.random() < 0.35 ? `hue-rotate(${rand(-60, 60)}deg) saturate(1.6)` : "none";
+      el.style.filter =
+        Math.random() < 0.35
+          ? `hue-rotate(${rand(-60, 60)}deg) saturate(1.6)`
+          : "none";
       el.dataset.rgb = String(Math.random() < 0.4);
       el.style.opacity = "1";
-      timers.push(window.setTimeout(() => (el.style.opacity = "0"), rand(50, 220)));
+      timers.push(
+        window.setTimeout(() => (el.style.opacity = "0"), rand(50, 220)),
+      );
     };
 
     const burst = () => {
       if (!alive) return;
-      const n = Math.random() < 0.25 ? Math.ceil(rand(2, STRIPS)) : Math.ceil(rand(1, 2));
+      const n =
+        Math.random() < 0.25
+          ? Math.ceil(rand(2, STRIPS))
+          : Math.ceil(rand(1, 2));
       const pool = strips.current.filter(Boolean) as HTMLDivElement[];
-      pool.sort(() => Math.random() - 0.5).slice(0, n).forEach(fireStrip);
+      pool
+        .sort(() => Math.random() - 0.5)
+        .slice(0, n)
+        .forEach(fireStrip);
       if (n > 2 && art.current) {
         art.current.dataset.jolt = "true";
-        timers.push(window.setTimeout(() => art.current && (art.current.dataset.jolt = "false"), 140));
+        timers.push(
+          window.setTimeout(
+            () => art.current && (art.current.dataset.jolt = "false"),
+            140,
+          ),
+        );
       }
-      timers.push(window.setTimeout(burst, Math.random() < 0.6 ? rand(60, 260) : rand(500, 1800)));
+      timers.push(
+        window.setTimeout(
+          burst,
+          Math.random() < 0.6 ? rand(60, 260) : rand(500, 1800),
+        ),
+      );
     };
     timers.push(window.setTimeout(burst, 600));
 
@@ -101,13 +129,17 @@ export default function GlitchStage({ heading, background, tiger, tigerMobile, l
       <div className="absolute left-1/2 top-1/2 flex -translate-x-1/2 -translate-y-1/2 animate-fade-blur flex-col items-center gap-3.5 max-md:top-[72%]">
         <h1 className="sr-only">{heading}</h1>
         {/* eslint-disable-next-line @next/next/no-img-element */}
-        <img src={logo.src} alt={logo.alt} className="h-auto w-[clamp(170px,15vw,260px)]" />
-        <Link
+        <img
+          src={logo.src}
+          alt={logo.alt}
+          className="h-auto w-[clamp(170px,15vw,260px)]"
+        />
+        <SmartLink
           href={explore.href}
           className="relative py-1.5 pl-[0.32em] text-xs uppercase tracking-[0.32em] text-bone after:absolute after:bottom-0 after:left-1/2 after:h-px after:w-0 after:bg-current after:transition-all after:duration-400 hover:after:left-0 hover:after:w-full"
         >
           {explore.label}
-        </Link>
+        </SmartLink>
       </div>
     </main>
   );

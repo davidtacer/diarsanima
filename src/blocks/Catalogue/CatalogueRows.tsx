@@ -1,10 +1,16 @@
 "use client";
 
-import Link from "next/link";
 import { useState } from "react";
+import SmartLink from "@/components/SmartLink";
 
 type Focal = "center" | "top" | "bottom" | "left" | "right";
-type Plate = { id: string; src: string; alt: string; caption: string; focal: Focal };
+type Plate = {
+  id: string;
+  src: string;
+  alt: string;
+  caption: string;
+  focal: Focal;
+};
 
 export type Section = {
   id: string;
@@ -25,13 +31,20 @@ const focalClass: Record<Focal, string> = {
   right: "object-right",
 };
 
-const caption = (c: string) => c.toLowerCase().replace(/\b\w/g, (ch) => ch.toUpperCase());
+const caption = (c: string) =>
+  c.toLowerCase().replace(/\b\w/g, (ch) => ch.toUpperCase());
 
 /**
  * Kategorije kot vrstice muzejskega kataloga. Pod miško: naslov poševen in rožnat,
  * sličice dobijo barve, večje delo se "dvigne iz arhiva".
  */
-export default function CatalogueRows({ sections, enterLabel }: { sections: Section[]; enterLabel: string }) {
+export default function CatalogueRows({
+  sections,
+  enterLabel,
+}: {
+  sections: Section[];
+  enterLabel: string;
+}) {
   const [active, setActive] = useState<number | null>(null);
 
   return (
@@ -39,7 +52,7 @@ export default function CatalogueRows({ sections, enterLabel }: { sections: Sect
       {sections.map((s, i) => {
         const on = active === i;
         return (
-          <Link
+          <SmartLink
             key={s.id}
             href={s.href}
             data-on={on}
@@ -87,28 +100,39 @@ export default function CatalogueRows({ sections, enterLabel }: { sections: Sect
                     height={120}
                     className={`${focalClass[w.focal]} h-30 w-24 bg-paper-raised object-cover opacity-75 grayscale-100 sepia-[.35] transition-[filter,opacity] duration-700 group-data-[on=true]/row:opacity-100 group-data-[on=true]/row:grayscale-0 group-data-[on=true]/row:sepia-0 max-md:h-[104px] max-md:w-[84px] max-md:opacity-100 max-md:grayscale-0 max-md:sepia-0`}
                   />
-                  <figcaption className="mt-1.5 truncate font-display text-[11px] italic text-char-soft">{caption(w.caption)}</figcaption>
+                  <figcaption className="mt-1.5 truncate font-display text-[11px] italic text-char-soft">
+                    {caption(w.caption)}
+                  </figcaption>
                 </figure>
               ))}
               <span className="mb-[22px] ml-2 flex items-center gap-3 text-[11px] uppercase tracking-[0.24em] transition-opacity group-data-[on=true]/row:opacity-0 max-md:hidden">
-                <span className="grid size-10 place-items-center rounded-full border border-char tracking-normal">→</span>
+                <span className="grid size-10 place-items-center rounded-full border border-char tracking-normal">
+                  →
+                </span>
                 {enterLabel}
               </span>
             </div>
 
             {/* delo, ki se dvigne iz arhiva */}
             {s.feature && (
-            <figure
-              aria-hidden
-              className="pointer-events-none absolute right-0 top-6 z-20 w-[250px] translate-y-5 rotate-0 bg-paper-raised px-4 pb-3.5 pt-4 opacity-0 shadow-paper-lift transition-[opacity,translate,rotate] duration-700 ease-shatter group-data-[on=true]/row:translate-y-0 group-data-[on=true]/row:rotate-3 group-data-[on=true]/row:opacity-100 max-lg:hidden"
-            >
-              <span className="absolute -top-[7px] left-1/2 size-3 -translate-x-1/2 rounded-full bg-ochre" />
-              {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img src={s.feature.src} alt="" loading="lazy" className={`${focalClass[s.feature.focal]} aspect-[4/5] w-full object-cover`} />
-              <figcaption className="mt-2.5 font-display text-sm italic text-char-soft">{s.feature.caption}</figcaption>
-            </figure>
+              <figure
+                aria-hidden
+                className="pointer-events-none absolute right-0 top-6 z-20 w-[250px] translate-y-5 rotate-0 bg-paper-raised px-4 pb-3.5 pt-4 opacity-0 shadow-paper-lift transition-[opacity,translate,rotate] duration-700 ease-shatter group-data-[on=true]/row:translate-y-0 group-data-[on=true]/row:rotate-3 group-data-[on=true]/row:opacity-100 max-lg:hidden"
+              >
+                <span className="absolute -top-[7px] left-1/2 size-3 -translate-x-1/2 rounded-full bg-ochre" />
+                {/* eslint-disable-next-line @next/next/no-img-element */}
+                <img
+                  src={s.feature.src}
+                  alt=""
+                  loading="lazy"
+                  className={`${focalClass[s.feature.focal]} aspect-[4/5] w-full object-cover`}
+                />
+                <figcaption className="mt-2.5 font-display text-sm italic text-char-soft">
+                  {s.feature.caption}
+                </figcaption>
+              </figure>
             )}
-          </Link>
+          </SmartLink>
         );
       })}
     </div>

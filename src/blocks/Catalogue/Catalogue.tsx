@@ -1,4 +1,3 @@
-import Link from "next/link";
 import Drips from "@/components/Drips";
 import RichText from "@/components/RichText";
 import Seal from "@/components/Seal";
@@ -7,6 +6,7 @@ import { srcOf } from "@/lib/images";
 import type { BlockProps } from "@/lib/types";
 import CatalogueRows from "./CatalogueRows";
 import type { CatalogueBlock } from "./schema";
+import SmartLink from "@/components/SmartLink";
 
 export default function Catalogue({ block, ctx }: BlockProps<CatalogueBlock>) {
   const sections = block.sections.map((s) => {
@@ -20,7 +20,13 @@ export default function Catalogue({ block, ctx }: BlockProps<CatalogueBlock>) {
       note: s.note,
       plates: s.plates.map((ref) => {
         const w = ctx.work(ref);
-        return { id: `${ref.page}-${ref.work}`, src: srcOf(w.image, 640), alt: w.image.alt, caption: `${w.number} ${w.title}`, focal: w.image.focal };
+        return {
+          id: `${ref.page}-${ref.work}`,
+          src: srcOf(w.image, 640),
+          alt: w.image.alt,
+          caption: `${w.number} ${w.title}`,
+          focal: w.image.focal,
+        };
       }),
       feature: feature && {
         src: srcOf(feature.image, 640),
@@ -35,12 +41,16 @@ export default function Catalogue({ block, ctx }: BlockProps<CatalogueBlock>) {
     <section className="grid grid-cols-[300px_1fr] gap-[72px] px-[clamp(16px,4.5vw,64px)] pt-10 max-lg:grid-cols-[240px_1fr] max-lg:gap-10 max-md:flex max-md:flex-col max-md:gap-7 max-md:pt-4">
       {/* katalogni list */}
       <aside className="sticky top-10 self-start border-t border-char pt-[18px] max-md:static max-md:order-2">
-        <p className="text-xs uppercase tracking-[0.28em] text-gold">{block.eyebrow}</p>
+        <p className="text-xs uppercase tracking-[0.28em] text-gold">
+          {block.eyebrow}
+        </p>
         {block.facts.length > 0 && (
           <dl className="mt-[22px] grid grid-cols-[auto_1fr] gap-x-[18px] gap-y-2.5 text-xs">
             {block.facts.map((f) => (
               <div key={f.id} className="contents">
-                <dt className="uppercase tracking-[0.2em] text-gold">{f.label}</dt>
+                <dt className="uppercase tracking-[0.2em] text-gold">
+                  {f.label}
+                </dt>
                 <dd className="break-words text-char-soft">{f.value}</dd>
               </div>
             ))}
@@ -51,13 +61,28 @@ export default function Catalogue({ block, ctx }: BlockProps<CatalogueBlock>) {
           ctx={ctx}
           className="mt-[30px] text-[15px] font-light leading-[1.75] text-char-soft [&_em]:font-display [&_em]:text-[17px] [&_em]:text-char"
         />
-        {block.showSignature && <UploadImage image={ctx.site.brand.signature} sizes="96px" className="mt-6 h-auto w-24" />}
-        <nav aria-label={block.eyebrow} className="mt-9 grid gap-2 border-t border-rule pt-4 text-xs uppercase tracking-[0.2em] text-char-soft max-md:hidden">
+        {block.showSignature && (
+          <UploadImage
+            image={ctx.site.brand.signature}
+            sizes="96px"
+            className="mt-6 h-auto w-24"
+          />
+        )}
+        <nav
+          aria-label={block.eyebrow}
+          className="mt-9 grid gap-2 border-t border-rule pt-4 text-xs uppercase tracking-[0.2em] text-char-soft max-md:hidden"
+        >
           {sections.map((s) => (
-            <Link key={s.id} href={s.href} className="flex justify-between gap-4 transition-colors hover:text-rose">
+            <SmartLink
+              key={s.id}
+              href={s.href}
+              className="flex justify-between gap-4 transition-colors hover:text-rose"
+            >
               <span>{s.title}</span>
-              <i className="font-display text-[13px] tracking-normal text-gold">{s.numeral}</i>
-            </Link>
+              <i className="font-display text-[13px] tracking-normal text-gold">
+                {s.numeral}
+              </i>
+            </SmartLink>
           ))}
         </nav>
       </aside>
@@ -71,7 +96,9 @@ export default function Catalogue({ block, ctx }: BlockProps<CatalogueBlock>) {
           {(block.subLeft || block.subRight) && (
             <div className="flex justify-between gap-2 pb-1.5 pt-3.5 text-[11px] uppercase tracking-[0.24em] text-char-soft max-md:flex-col">
               {block.subLeft && <span>{block.subLeft}</span>}
-              {block.subRight && <span className="max-md:hidden">{block.subRight}</span>}
+              {block.subRight && (
+                <span className="max-md:hidden">{block.subRight}</span>
+              )}
             </div>
           )}
         </div>

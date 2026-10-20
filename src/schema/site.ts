@@ -54,6 +54,8 @@ export const siteSchema = z
         back: shortText(20),
         menu: shortText(20),
         close: shortText(20),
+        /** dodatek za bralnike zaslona pri zunanjih povezavah */
+        newTab: shortText(40),
         enter: shortText(20),
         skipToContent: shortText(40),
         language: shortText(20),

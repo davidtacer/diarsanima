@@ -5,9 +5,16 @@ export const catalogueSchema = z
   .object({
     id,
     type: z.literal("catalogue"),
-    heading: z.object({ upright: shortText(12), italic: shortText(12) }).strict(),
+    heading: z
+      .object({ upright: shortText(12), italic: shortText(12) })
+      .strict(),
     eyebrow: shortText(40),
-    facts: z.array(z.object({ id, label: shortText(16), value: shortText(80) }).strict()).max(6).default([]),
+    facts: z
+      .array(
+        z.object({ id, label: shortText(16), value: shortText(80) }).strict(),
+      )
+      .max(6)
+      .default([]),
     intro: richText(700),
     showSignature: z.boolean().default(true),
     subLeft: shortText(60).optional(),

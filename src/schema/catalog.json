@@ -427,6 +427,11 @@
             "minLength": 1,
             "maxLength": 20
           },
+          "newTab": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 40
+          },
           "enter": {
             "type": "string",
             "minLength": 1,
@@ -452,6 +457,7 @@
           "back",
           "menu",
           "close",
+          "newTab",
           "enter",
           "skipToContent",
           "language",

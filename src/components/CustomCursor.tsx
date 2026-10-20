@@ -11,7 +11,8 @@ export default function CustomCursor({ image }: { image: string }) {
   const dot = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    if (!window.matchMedia("(hover: hover) and (pointer: fine)").matches) return;
+    if (!window.matchMedia("(hover: hover) and (pointer: fine)").matches)
+      return;
     document.documentElement.classList.add("has-custom-cursor");
 
     const target = { x: window.innerWidth / 2, y: window.innerHeight / 2 };
@@ -32,7 +33,8 @@ export default function CustomCursor({ image }: { image: string }) {
         pos.y = target.y;
         set("visible", true);
       }
-      if (dot.current) dot.current.style.transform = `translate3d(${target.x}px, ${target.y}px, 0)`;
+      if (dot.current)
+        dot.current.style.transform = `translate3d(${target.x}px, ${target.y}px, 0)`;
       const el = e.target as HTMLElement | null;
       set("hover", !!el?.closest("a, button, [data-cursor='hover']"));
     };
@@ -46,7 +48,8 @@ export default function CustomCursor({ image }: { image: string }) {
     const tick = () => {
       pos.x += (target.x - pos.x) * 0.16;
       pos.y += (target.y - pos.y) * 0.16;
-      if (ring.current) ring.current.style.transform = `translate3d(${pos.x}px, ${pos.y}px, 0)`;
+      if (ring.current)
+        ring.current.style.transform = `translate3d(${pos.x}px, ${pos.y}px, 0)`;
       raf = requestAnimationFrame(tick);
     };
     raf = requestAnimationFrame(tick);
@@ -76,7 +79,11 @@ export default function CustomCursor({ image }: { image: string }) {
           style={{ backgroundImage: `url(${image})` }}
         />
       </div>
-      <div ref={dot} className={`-ml-0.5 -mt-0.5 size-1 rounded-full bg-white ${base}`} aria-hidden />
+      <div
+        ref={dot}
+        className={`-ml-0.5 -mt-0.5 size-1 rounded-full bg-white ${base}`}
+        aria-hidden
+      />
     </>
   );
 }

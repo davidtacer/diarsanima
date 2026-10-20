@@ -1,5 +1,6 @@
 import type { Site } from "@/schema/site";
 import Signature from "./Signature";
+import SmartLink from "@/components/SmartLink";
 
 function SocialIcon({ type }: { type: Site["social"][number]["type"] }) {
   if (type === "instagram")
@@ -68,16 +69,14 @@ export default function SiteFooter({
       <div className="flex items-center justify-between">
         <div className="flex gap-[18px]">
           {site.social.map((s) => (
-            <a
+            <SmartLink
               key={s.id}
               href={s.url}
-              target="_blank"
-              rel="noopener noreferrer"
               aria-label={socialName[s.type]}
               className={`${paper ? "text-char" : "text-bone"} opacity-85 transition-opacity hover:opacity-100`}
             >
               <SocialIcon type={s.type} />
-            </a>
+            </SmartLink>
           ))}
         </div>
         {/* letnica se izračuna ob buildu */}

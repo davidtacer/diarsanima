@@ -17,7 +17,10 @@ export const meta = {
             number: "4",
             title: "SLAVIC",
             details: "100×80 cm, Oil on Canvas, Sinji vrh 2023",
-            image: { src: "/uploads/works/paintings/slavic.webp", alt: "Oil portrait of a woman in a Slavic headdress" },
+            image: {
+              src: "/uploads/works/paintings/slavic.webp",
+              alt: "Oil portrait of a woman in a Slavic headdress",
+            },
           },
         ],
       },
