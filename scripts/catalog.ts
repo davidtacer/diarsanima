@@ -21,7 +21,7 @@ import { siteSchema } from "../src/schema/site";
 const metas = { glitchIntro, shatterMenu, catalogue, gallery, pageHeading, text, cards, contact, cta, notice };
 
 const catalog = {
-  generated: "npm run catalog",
+  generated: "yarn catalog",
   site: zodToJsonSchema(siteSchema, { $refStrategy: "none" }),
   blocks: Object.entries(blockSchemas).map(([type, schema]) => {
     const meta = metas[type as keyof typeof metas];

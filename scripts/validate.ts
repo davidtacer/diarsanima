@@ -1,7 +1,7 @@
 /**
  * Validacija celotne vsebine (content/). Obvezno pred vsakim commitom.
- * Uporaba: npm run validate            (berljiv izpis)
- *          npm run validate -- --json  (napake kot JSON za urejevalnik)
+ * Uporaba: yarn validate            (berljiv izpis)
+ *          yarn validate --json  (napake kot JSON za urejevalnik)
  */
 import fs from "node:fs";
 import path from "node:path";
@@ -111,7 +111,7 @@ function checkLang(
     // slike obstajajo
     for (const { value, path: p } of collect(raw, "src"))
       if (typeof value === "string" && value.startsWith("/uploads/") && !fs.existsSync(path.join(PUBLIC, value)))
-        add(file, p, `slika ${value} ne obstaja v public/ (npm run uploads:wp ali dodaj datoteko)`);
+        add(file, p, `slika ${value} ne obstaja v public/ (yarn uploads:wp ali dodaj datoteko)`);
 
     // notranje povezave
     for (const { value, path: p } of collect(raw, "page"))

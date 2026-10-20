@@ -10,12 +10,12 @@ Spletna stran umetnice DiArsanima. Next.js 15 (statični izvoz) + Tailwind v4, z
 ## Ukazi
 
 ```bash
-npm install
-npm run uploads:wp   # enkratno: prenese slike del z WordPressa v public/uploads (nato commitaj)
-npm run dev
-npm run check        # validate + catalog + tsc + lint + build (obvezno pred commitom)
-npm run validate -- --json
-npm run uploads -- public/uploads/<datoteka>   # nova slika → WebP + velikosti
+yarn install
+yarn uploads:wp   # enkratno: prenese slike del z WordPressa v public/uploads (nato commitaj)
+yarn dev
+yarn check        # validate + catalog + tsc + lint + build (obvezno pred commitom)
+yarn validate --json
+yarn uploads public/uploads/<datoteka>   # nova slika → WebP + velikosti
 ```
 
 `NEXT_PUBLIC_ENV=production` samo za objavo na `main`. Brez nje stran vrne `noindex`, `robots.txt` z `Disallow: /` in prazen sitemap.

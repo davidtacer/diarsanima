@@ -1,11 +1,11 @@
 /**
  * Enkratni prenos slik z obstoječe WordPress strani v public/uploads (mapa: scripts/wp-sources.json),
  * nato pretvorba v WebP + velikosti (optimize-uploads). Po prenosu slike commitaj, stran od WP ni več odvisna.
- * Uporaba: npm run uploads:wp
+ * Uporaba: yarn uploads:wp
  */
 import fs from "node:fs";
 import path from "node:path";
-import { execFileSync } from "node:child_process";
+import { optimizeFile } from "./optimize-uploads";
 
 const sources: Record<string, string> = JSON.parse(fs.readFileSync(path.join(__dirname, "wp-sources.json"), "utf8"));
 
@@ -23,7 +23,7 @@ async function main() {
       continue;
     }
     fs.writeFileSync(raw, Buffer.from(await res.arrayBuffer()));
-    execFileSync("npx", ["tsx", path.join(__dirname, "optimize-uploads.ts"), raw], { stdio: "inherit" });
+    await optimizeFile(raw);
     ok++;
   }
   console.log(`Preneseno: ${ok}`);

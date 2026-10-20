@@ -2,8 +2,8 @@
  * Pripravi slike v public/uploads za statični izvoz:
  * - vsako sliko pretvori v WebP (največ 2400 px širine, brez EXIF/metapodatkov),
  * - ustvari velikosti -640, -1280, -2400 (samo manjše od izvirnika) za srcset.
- * Uporaba: npm run uploads            (obdela vse)
- *          npm run uploads -- <pot>   (obdela eno datoteko ali mapo)
+ * Uporaba: yarn uploads          (obdela vse)
+ *          yarn uploads <pot>    (obdela eno datoteko ali mapo)
  */
 import fs from "node:fs";
 import path from "node:path";
@@ -20,7 +20,7 @@ function walk(p: string): string[] {
   return fs.readdirSync(p).flatMap((f) => walk(path.join(p, f)));
 }
 
-async function processFile(file: string) {
+export async function optimizeFile(file: string) {
   if (!INPUT.test(file) || VARIANT.test(file)) return;
   const base = file.replace(INPUT, "");
   const out = `${base}.webp`;
@@ -39,9 +39,11 @@ async function processFile(file: string) {
 
 async function main() {
   const target = process.argv[2] ? path.resolve(process.argv[2]) : ROOT;
-  for (const f of walk(target)) await processFile(f);
+  for (const f of walk(target)) await optimizeFile(f);
 }
-main().catch((e) => {
-  console.error(e);
-  process.exit(1);
-});
+// samo ob neposrednem zagonu (ne ob uvozu iz fetch-wp-uploads)
+if (process.argv[1] && /optimize-uploads\.ts$/.test(process.argv[1]))
+  main().catch((e) => {
+    console.error(e);
+    process.exit(1);
+  });
