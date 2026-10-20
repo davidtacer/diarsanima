@@ -99,7 +99,7 @@ export default function PaperLayout({
       <main id="main" className="relative z-10">
         {children}
       </main>
-      <SiteFooter site={site} tone="paper" />
+      <SiteFooter site={site} lang={ctx.lang} tone="paper" />
     </div>
   );
 }

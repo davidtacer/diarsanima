@@ -3,16 +3,16 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "next dev",
-    "build": "next build && tsx scripts/postbuild.ts",
+    "dev": "tsx scripts/prebuild.ts && next dev",
+    "build": "tsx scripts/prebuild.ts && next build && tsx scripts/postbuild.ts",
     "start": "next start",
     "lint": "eslint",
     "validate": "tsx scripts/validate.ts",
     "catalog": "tsx scripts/catalog.ts",
     "uploads": "tsx scripts/optimize-uploads.ts",
     "uploads:wp": "tsx scripts/fetch-wp-uploads.ts",
-    "typecheck": "tsc --noEmit",
-    "check": "yarn validate && yarn catalog && tsc --noEmit && yarn lint && yarn build"
+    "typecheck": "tsx scripts/prebuild.ts && tsc --noEmit",
+    "check": "yarn validate && yarn catalog && yarn typecheck && yarn lint && yarn build"
   },
   "dependencies": {
     "@fontsource/bodoni-moda": "^5.3.0",

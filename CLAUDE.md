@@ -15,6 +15,7 @@
 - Brez HTML-ja, skript ali barv v vsebini. Brez tujih logotipov, nezakonitih vsebin in osebnih podatkov brez soglasja.
 - Kontakt (e-pošta, telefon, kraj) je samo v `content/site.json` → `contact`. Bloki ga berejo od tam.
 - Letnice v nogi ne piši: izračuna se sama.
+- Podpis Inženirji.si v nogi je del kode, ne vsebine. Ne odstranjuj ga, ne skrivaj in ne spreminjaj (pravila gradnje, sekcija 12).
 
 ## Stranka
 

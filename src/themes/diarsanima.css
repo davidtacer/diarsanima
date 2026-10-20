@@ -11,6 +11,15 @@
 @import "@fontsource/jost/400.css";
 @import "@fontsource/jost/500.css";
 
+/* Podpis Inženirji.si: JetBrains Mono (OFL), podnabor samo za znake "inzenirji.s_" */
+@font-face {
+  font-family: "JetBrains Mono";
+  src: url("./fonts/jetbrains-mono-signature.woff2") format("woff2");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
 @theme {
   --color-ink: #000;
   --color-bone: #f4efe8;
@@ -28,6 +37,10 @@
   --color-sage: #5f6e52;
   --color-moss: #46603a;
   --color-bark: #5a4a3c;
+
+  /* podpis Inženirji.si (sekcija 12): na temnih delih neon zelena, na platnu temnejša zelena */
+  --color-signature: #00ff41;
+  --font-signature: "JetBrains Mono", ui-monospace, monospace;
 
   /* posebni toni intro in /home */
   --color-intro-night: #1a0a1e;
@@ -134,4 +147,22 @@
 }
 @utility text-glow {
   text-shadow: 0 0 24px rgb(255 255 255 / 0.35);
+}
+
+/* podpis Inženirji.si */
+.signature[data-tone="paper"] {
+  --color-signature: #1f7a3a;
+}
+.signature-cursor {
+  animation: sig-blink 1s steps(1) infinite;
+}
+@keyframes sig-blink {
+  50% {
+    opacity: 0;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .signature-cursor {
+    animation: none;
+  }
 }

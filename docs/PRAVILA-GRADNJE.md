@@ -336,6 +336,7 @@ CI na `dev` in `main` požene `npm run check`. Rdeč CI = ni merge.
 - Spreminjanje skupnih blokov predloge za eno stranko (kopiraj v nov blok ali dodaj `variant`).
 - Strežniške funkcije, API poti, `getServerSideProps`, ISR (stran je statični izvoz).
 - WordPress, page builderji, CMS knjižnice. Urejevalnik je naš.
+- Odstranjevanje, skrivanje ali spreminjanje podpisa Inženirji.si (sekcija 12) brez Davidove pisne odobritve.
 
 ---
 
@@ -363,6 +364,7 @@ Dodatno ob predaji:
 - [ ] `catalog.json` posodobljen in commitan.
 - [ ] `CLAUDE.md` izpolnjen za stranko (sekcija 11).
 - [ ] Vse slike imajo smiseln `alt`, brez EXIF.
+- [ ] Podpis v nogi (sekcija 12): pravilen datum, povezava z `?ref=<SITE_ID>`, hover deluje, na 390 px ena vrstica, kontrast ≥ 4,5 : 1.
 
 ---
 
@@ -378,7 +380,105 @@ Dodatno ob predaji:
 
 ---
 
-## 12. Git
+## 12. Podpis Inženirji.si v nogi (obvezno)
+
+Vsaka stran ima v nogi isti podpis. Je del kode predloge (`src/components/Signature.tsx`), **ne vsebine**: urejevalnik ga ne more spremeniti ali odstraniti, v `content/` ga ni.
+
+### 12.1 Videz
+
+```
+▌ posodobljeno 18. 10. 2026 · inzenirji.si_
+```
+
+Ob hoverju (ali fokusu s tipkovnico) se desno razširi: `Spletna stran, ki jo urejate s pogovorom →`
+
+| Del | Pravilo |
+| --- | --- |
+| `▌` | Naš znak I. Barva `--color-signature` (privzeto `#00FF41`). Na svetlih temah, kjer neon zelena slabo izstopa, ga tema nastavi na temnejšo zeleno ali akcent stranke. |
+| »posodobljeno 18. 10. 2026« | Datum zadnje objave na `main`. Pisava stranke (`font-body`). |
+| `inzenirji.si` | Vedno monospace (`JetBrains Mono`, lokalno naložen podnabor samo za te znake), male črke. |
+| `_` | Utripajoč kurzor (1 s, ostro, brez fade). Pri `prefers-reduced-motion: reduce` ne utripa. |
+
+- Ena vrstica, `text-xs`, barva `currentColor` z 60 % prosojnostjo, zadnja vrstica noge (pod podatki stranke in letnico).
+- Na mobilnem se ne lomi v dve vrstici; če je noga ozka, se skrije samo datum, `▌ inzenirji.si_` ostane.
+- Kontrast besedila mora biti vsaj 4,5 : 1 glede na ozadje noge. Znak in kurzor sta dekorativna (`aria-hidden`).
+- Ni logotipa v sliki, ni okvirja, ni ozadja, ni »Powered by«, »Izdelava:«, »Made with«.
+
+### 12.2 Datum posodobitve
+
+- Izračuna se ob buildu: `git log -1 --format=%cI` (Cloudflare pri buildu klonira repozitorij). Če ukaz ne uspe, uporabi čas builda.
+- Format po jeziku strani prek `Intl.DateTimeFormat` (`sl`: `18. 10. 2026`).
+- Na veji `dev` je enak mehanizem, da stranka na testni strani vidi, kako bo izgledalo.
+
+### 12.3 Besedila po jezikih
+
+Fiksna v kodi komponente (ne v `ui` vsebine):
+
+| Jezik | Datum | Hover |
+| --- | --- | --- |
+| sl | posodobljeno | Spletna stran, ki jo urejate s pogovorom → |
+| en | updated | A website you edit by chatting → |
+| de | aktualisiert | Eine Website, die Sie per Chat bearbeiten → |
+| hr | ažurirano | Web stranica koju uređujete razgovorom → |
+
+Za jezik, ki ga ni v tabeli, uporabi angleščino in ga dodaj v tabelo v predlogi.
+
+### 12.4 Povezava
+
+```tsx
+<a
+  href={`https://inzenirji.si/?ref=${SITE_ID}`}
+  className="signature"
+  aria-label="inzenirji.si – spletna stran, ki jo urejate s pogovorom"
+>
+```
+
+- `SITE_ID` iz `src/config/site-id.ts`. Po `ref` CRM prepozna, s katere strani stranke je prišel obiskovalec.
+- Besedilo povezave je samo ime znamke `inzenirji.si`. **Brez ključnih besed** (»izdelava spletnih strani« ipd.) v besedilu, `title` ali `aria-label` onkraj zgornjega, ker Google enake povezave s ključnimi besedami v nogah mnogih strani lahko oceni kot manipulacijo.
+- Brez `target="_blank"`, brez `nofollow`.
+- Na `/uredi` podpisa ni (stran nima noge).
+
+### 12.5 Primer komponente
+
+```tsx
+// src/components/Signature.tsx  (strežniška komponenta, edini odjemalski del je CSS animacija)
+import { SITE_ID } from "@/config/site-id";
+import { BUILD_UPDATED_AT } from "@/config/build"; // zapiše scripts/prebuild.ts iz git log
+
+const t = {
+  sl: { updated: "posodobljeno", hover: "Spletna stran, ki jo urejate s pogovorom →" },
+  en: { updated: "updated", hover: "A website you edit by chatting →" },
+  de: { updated: "aktualisiert", hover: "Eine Website, die Sie per Chat bearbeiten →" },
+  hr: { updated: "ažurirano", hover: "Web stranica koju uređujete razgovorom →" },
+} as const;
+
+export function Signature({ lang }: { lang: string }) {
+  const s = t[lang as keyof typeof t] ?? t.en;
+  const date = new Intl.DateTimeFormat(lang, { day: "numeric", month: "numeric", year: "numeric" })
+    .format(new Date(BUILD_UPDATED_AT));
+  return (
+    <a href={`https://inzenirji.si/?ref=${SITE_ID}`} className="signature group inline-flex items-baseline gap-1.5 whitespace-nowrap text-xs opacity-60 hover:opacity-100 focus-visible:opacity-100">
+      <span aria-hidden className="text-signature">▌</span>
+      <span className="max-sm:hidden">{s.updated} {date} ·</span>
+      <span className="font-signature">inzenirji.si<span aria-hidden className="signature-cursor">_</span></span>
+      <span className="hidden group-hover:inline group-focus-visible:inline">{s.hover}</span>
+    </a>
+  );
+}
+```
+
+```css
+@theme { --color-signature: #00FF41; --font-signature: "JetBrains Mono", ui-monospace, monospace; }
+.signature-cursor { animation: sig-blink 1s steps(1) infinite; }
+@keyframes sig-blink { 50% { opacity: 0; } }
+@media (prefers-reduced-motion: reduce) { .signature-cursor { animation: none; } }
+```
+
+Komponento kliče noga predloge, ne posamezen blok. Tema stranke sme spremeniti samo `--color-signature`.
+
+---
+
+## 13. Git
 
 - Gradnja na veji `build/<stranka>`, nato merge v `dev`. `main` je samo za objavo (merge iz `dev` po uspešnem CI).
 - Commit sporočila v slovenščini, v naravnem jeziku (»Dodan blok Cenik s paketi«), kot jih kasneje piše urejevalnik.

@@ -25,7 +25,8 @@ export default function RenderPage({ page, ctx }: { page: Page; ctx: BlockContex
   return (
     <>
       <main>{content}</main>
-      {page.layout === "stage" && <SiteFooter site={ctx.site} overlay />}
+      {page.layout === "stage" && <SiteFooter site={ctx.site} lang={ctx.lang} overlay />}
+      {page.layout === "intro" && <SiteFooter site={ctx.site} lang={ctx.lang} minimal />}
       <ValidityGuard />
     </>
   );
