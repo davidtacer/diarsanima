@@ -11,7 +11,7 @@ const services = [
 
 export default function AboutPage() {
   return (
-    <PageShell title="About Artist">
+    <PageShell title="About Artist" active="/about-artist">
       <Lead>Welcome to the artistic landscape of DiArsanima!</Lead>
       <Todo>TODO: prenesi besedilo, podpis (dia-podpis.png) in portret (dia-portret-1.png) iz WP.</Todo>
 

@@ -18,12 +18,14 @@ export function FacebookIcon() {
   );
 }
 
-export default function SiteFooter({ overlay = false }: { overlay?: boolean }) {
+/** overlay: fiksna noga čez celozaslonske strani (/home). tone="paper": svetla tema podstrani. */
+export default function SiteFooter({ overlay = false, tone = "night" }: { overlay?: boolean; tone?: "night" | "paper" }) {
+  const paper = tone === "paper";
   return (
     <footer
-      className={`flex items-center justify-between px-[clamp(16px,5vw,48px)] py-[18px] text-[11px] tracking-[0.06em] text-bone-muted ${
-        overlay ? "fixed inset-x-0 bottom-0 z-20" : ""
-      }`}
+      className={`flex items-center justify-between px-[clamp(16px,5vw,64px)] py-[22px] text-[11px] tracking-[0.06em] ${
+        paper ? "border-t border-rule text-char-soft" : "text-bone-muted"
+      } ${overlay ? "fixed inset-x-0 bottom-0 z-20" : "relative z-10"}`}
     >
       <div className="flex gap-[18px]">
         {[
@@ -36,7 +38,7 @@ export default function SiteFooter({ overlay = false }: { overlay?: boolean }) {
             target="_blank"
             rel="noopener noreferrer"
             aria-label={label as string}
-            className="text-bone opacity-85 transition-opacity hover:opacity-100"
+            className={`${paper ? "text-char" : "text-bone"} opacity-85 transition-opacity hover:opacity-100`}
           >
             {icon}
           </a>

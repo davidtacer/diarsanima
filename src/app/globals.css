@@ -5,6 +5,19 @@
   --color-bone: #f4efe8;
   --color-bone-muted: rgb(244 239 232 / 0.6);
 
+  /* CGP DiArsanima — tema "Platno" (podstrani) */
+  --color-paper: #efe9df;
+  --color-paper-raised: #e4ddd0;
+  --color-char: #16161a;
+  --color-char-soft: #56554f;
+  --color-rule: rgb(22 22 26 / 0.18);
+  --color-gold: #7f6232;
+  --color-rose: #9e3e59;
+  --color-ochre: #a95f12;
+  --color-sage: #5f6e52;
+  --color-moss: #46603a;
+  --color-bark: #5a4a3c;
+
   --font-display: "Bodoni Moda", "Didot", serif;
   --font-sans: "Jost", "Helvetica Neue", Arial, sans-serif;
 
@@ -21,6 +34,8 @@
   --animate-orbit-reverse: spin 14s linear infinite reverse;
   --animate-drift: drift var(--drift, 10s) ease-in-out infinite alternate;
   --animate-enter: enter 0.9s ease both;
+  --animate-seal: spin 14s linear infinite;
+  --animate-drip: drip 1.8s cubic-bezier(0.7, 0, 0.2, 1) backwards;
 
   @keyframes breathe {
     from {
@@ -64,6 +79,16 @@
   @keyframes drift {
     to {
       transform: translate3d(var(--ddx, 0), var(--ddy, 0), 0);
+    }
+  }
+  @keyframes spin {
+    to {
+      transform: rotate(360deg);
+    }
+  }
+  @keyframes drip {
+    from {
+      stroke-dashoffset: 200;
     }
   }
   @keyframes enter {

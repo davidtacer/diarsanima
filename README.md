@@ -37,3 +37,13 @@ Spoštuje `prefers-reduced-motion`.
 
 Strani `/artwork`, `/about-artist`, `/contact` in `/portfolio/[slug]` imajo strukturo in naslove;
 besedila, galerije in pravi e-naslov je treba prenesti iz WP (označeno s `TODO`).
+
+## Podstrani (CGP tema "Platno")
+
+Vse podstrani (`/artwork`, `/about-artist`, `/contact`, `/portfolio/*`) uporabljajo `src/components/paper/PaperShell.tsx`:
+svetlo platno, zrno, vodni žig `artSidebar.png` in meni z rimskimi številkami. CGP: priročnik DiArsanima (artifact).
+
+- `/artwork`: katalog (`paper/ArtworkCatalogue.tsx`). Vsaka kategorija ima niz sličic. Pod miško se naslov obarva in
+  postane ležeč, sličice dobijo barve, izbrano delo (`feature`) se "dvigne iz arhiva".
+- Seznam vseh del (naslovi, mere, tehnike, poti) je v `src/lib/works.ts`, povzet po WP portfoliu.
+  Slike se nalagajo z `diarsanima.com/wp-content/uploads`. Za lokalne kopije nastavi `NEXT_PUBLIC_WP_UPLOADS`.
