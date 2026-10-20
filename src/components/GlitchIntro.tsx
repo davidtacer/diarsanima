@@ -85,7 +85,7 @@ export default function GlitchIntro() {
             <img
               src={assets.tigerFull}
               alt=""
-              className="h-auto w-[min(100vw,190vh)] max-w-none drop-shadow-[0_0_6px_rgba(255,255,255,0.15)] max-md:h-[94vh] max-md:w-auto group-data-[jolt=true]:translate-x-1.5 group-data-[jolt=true]:[filter:drop-shadow(-3px_0_0_rgba(255,0,80,0.6))_drop-shadow(3px_0_0_rgba(0,200,255,0.6))]"
+              className="h-auto w-[min(100vw,190vh)] max-w-none opacity-80 drop-shadow-[0_0_6px_rgba(255,255,255,0.15)] max-md:h-[94vh] max-md:w-auto group-data-[jolt=true]:translate-x-1.5 group-data-[jolt=true]:[filter:drop-shadow(-3px_0_0_rgba(255,0,80,0.6))_drop-shadow(3px_0_0_rgba(0,200,255,0.6))]"
             />
           </picture>
         </div>
