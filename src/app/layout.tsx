@@ -19,7 +19,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <html lang={site.defaultLanguage}>
       <body>
-        <CustomCursor image={srcOf(site.brand.seal, 640)} />
+        <CustomCursor image={srcOf(site.brand.seal, 2400)} />
         {children}
       </body>
     </html>

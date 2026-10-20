@@ -19,6 +19,10 @@
       "illustration": {
         "src": "/uploads/tiger.webp",
         "alt": "White line drawing of a leaping winged tiger"
+      },
+      "illustrationMobile": {
+        "src": "/uploads/tiger-mobile.webp",
+        "alt": "White line drawing of a roaring tiger's head"
       }
     }
   ]

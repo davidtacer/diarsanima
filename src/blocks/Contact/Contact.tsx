@@ -1,4 +1,5 @@
 import UploadImage from "@/components/UploadImage";
+import { srcOf } from "@/lib/images";
 import type { BlockProps } from "@/lib/types";
 import type { ContactBlock } from "./schema";
 
@@ -25,13 +26,24 @@ export default function Contact({ block, ctx }: BlockProps<ContactBlock>) {
       </div>
       {block.illustration && (
         <figure aria-hidden className="pointer-events-none min-w-0 max-lg:-mx-4">
-          <div className="animate-float">
-            <UploadImage
-              image={block.illustration}
-              decorative
-              sizes="(max-width: 1023px) 100vw, 700px"
-              className="h-auto w-full opacity-80 invert"
-            />
+          <div
+            className={`animate-float ${
+              block.illustrationMobile
+                ? "max-md:mx-auto max-md:aspect-[1080/860] max-md:max-w-[420px] max-md:overflow-hidden max-md:[mask-image:linear-gradient(to_bottom,black_70%,transparent)]"
+                : ""
+            }`}
+          >
+            <picture>
+              {block.illustrationMobile && (
+                <source media="(max-width: 767px)" srcSet={srcOf(block.illustrationMobile, 1280)} />
+              )}
+              <UploadImage
+                image={block.illustration}
+                decorative
+                sizes="(max-width: 1023px) 100vw, 700px"
+                className={`h-auto w-full opacity-80 invert ${block.illustrationMobile ? "max-md:h-full max-md:object-cover max-md:object-[50%_35%]" : ""}`}
+              />
+            </picture>
           </div>
         </figure>
       )}

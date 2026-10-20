@@ -92,7 +92,7 @@ export default function GlitchStage({ heading, background, tiger, tigerMobile, l
             <img
               src={tiger.src}
               alt={tiger.alt}
-              className="h-auto w-[min(100vw,190vh)] max-w-none opacity-80 drop-shadow-tiger max-md:h-[94vh] max-md:w-auto group-data-[jolt=true]:translate-x-1.5 group-data-[jolt=true]:drop-shadow-glitch"
+              className="h-auto w-[min(100vw,190vh)] max-w-none opacity-50 drop-shadow-tiger max-md:h-[94vh] max-md:w-auto group-data-[jolt=true]:translate-x-1.5 group-data-[jolt=true]:drop-shadow-glitch"
             />
           </picture>
         </div>

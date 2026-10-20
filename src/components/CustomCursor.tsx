@@ -2,7 +2,10 @@
 
 import { useEffect, useRef } from "react";
 
-/** Krožni kurzor z logotipom, ki z zamikom sledi miški. */
+/**
+ * Krožni kurzor z logotipom, ki z zamikom sledi miški.
+ * Krog je izrisan v polni velikosti (72 px) in v mirovanju pomanjšan (scale 0.64), zato je ob povečanju nad povezavo oster.
+ */
 export default function CustomCursor({ image }: { image: string }) {
   const ring = useRef<HTMLDivElement>(null);
   const dot = useRef<HTMLDivElement>(null);
@@ -69,7 +72,7 @@ export default function CustomCursor({ image }: { image: string }) {
     <>
       <div ref={ring} className={`group size-0 ${base}`} aria-hidden>
         <div
-          className="absolute -left-5 -top-5 size-10 rounded-full border border-white/85 bg-[length:70%] bg-center bg-no-repeat transition-[transform,background-color] duration-[350ms] ease-[cubic-bezier(0.2,0.8,0.2,1)] group-data-[hover=true]:scale-[1.7] group-data-[hover=true]:bg-white/10 group-data-[down=true]:scale-[0.85]"
+          className="absolute -left-9 -top-9 size-18 scale-[0.64] rounded-full border-[1.5px] border-white/85 bg-[length:88%] bg-center bg-no-repeat transition-[scale,background-color] duration-[350ms] ease-[cubic-bezier(0.2,0.8,0.2,1)] group-data-[hover=true]:scale-100 group-data-[hover=true]:bg-white/10 group-data-[down=true]:scale-[0.56]"
           style={{ backgroundImage: `url(${image})` }}
         />
       </div>

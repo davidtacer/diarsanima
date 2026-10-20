@@ -9,6 +9,8 @@ export const contactSchema = z
     sub: shortText(80).optional(),
     /** Neobvezna linijska ilustracija (bela na prosojnem), na platnu se izriše temno. */
     illustration: image.optional(),
+    /** Neobvezna različica ilustracije za telefon (npr. samo glava tigra). */
+    illustrationMobile: image.optional(),
   })
   .strict();
 export type ContactBlock = z.infer<typeof contactSchema>;
