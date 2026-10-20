@@ -1,0 +1,165 @@
+{
+  "slug": "artwork",
+  "title": "Artwork",
+  "layout": "paper",
+  "seo": {
+    "description": "Paintings, digital artwork and murals by DiArsanima, where mythical creations meet portraiture."
+  },
+  "blocks": [
+    {
+      "id": "catalogue",
+      "type": "catalogue",
+      "heading": {
+        "upright": "Art",
+        "italic": "work"
+      },
+      "eyebrow": "Catalogue · vol. ii",
+      "facts": [
+        {
+          "id": "artist",
+          "label": "Artist",
+          "value": "DiArsanima (DiA)"
+        },
+        {
+          "id": "based",
+          "label": "Based",
+          "value": "Maribor, Slovenia"
+        },
+        {
+          "id": "media",
+          "label": "Media",
+          "value": "oil, acrylic, mixed media, digital collage, walls"
+        },
+        {
+          "id": "sections",
+          "label": "Sections",
+          "value": "three"
+        }
+      ],
+      "intro": "Welcome to the DiArsanima's online display of her artwork. Where *mythical creations* meet portraiture in different artistic mediums, formats and techniques. All based on the collective human archetypal heritage, approached by the artist through *contemporary ritual fusion process.*",
+      "showSignature": true,
+      "subLeft": "Three sections of one archive",
+      "subRight": "Hover a title to lift a work",
+      "sections": [
+        {
+          "id": "paintings",
+          "numeral": "I",
+          "title": "Paintings",
+          "page": "paintings",
+          "meta": [
+            "oil on canvas",
+            "acrylic · mixed media"
+          ],
+          "note": "portraits and archetypes",
+          "plates": [
+            {
+              "page": "paintings",
+              "work": "fulfilled"
+            },
+            {
+              "page": "paintings",
+              "work": "the-shaman"
+            },
+            {
+              "page": "paintings",
+              "work": "slavic"
+            },
+            {
+              "page": "paintings",
+              "work": "charka"
+            },
+            {
+              "page": "paintings",
+              "work": "malak"
+            }
+          ],
+          "feature": {
+            "page": "paintings",
+            "work": "slavic"
+          }
+        },
+        {
+          "id": "digital-artwork",
+          "numeral": "II",
+          "title": "Digital Artwork",
+          "page": "digital-artwork",
+          "meta": [
+            "digital collage",
+            "digital painting"
+          ],
+          "note": "the archetype series",
+          "plates": [
+            {
+              "page": "digital-artwork",
+              "work": "lady-of-the-dawn"
+            },
+            {
+              "page": "digital-artwork",
+              "work": "bird-of-paradise"
+            },
+            {
+              "page": "digital-artwork",
+              "work": "alone"
+            },
+            {
+              "page": "digital-artwork",
+              "work": "samira"
+            },
+            {
+              "page": "digital-artwork",
+              "work": "pepper"
+            }
+          ],
+          "feature": {
+            "page": "digital-artwork",
+            "work": "the-unicorn"
+          }
+        },
+        {
+          "id": "murals",
+          "numeral": "III",
+          "title": "Murals",
+          "page": "murals",
+          "meta": [
+            "walls · large scale",
+            "commissions"
+          ],
+          "note": "Maribor · Kamnik · Mexico",
+          "plates": [
+            {
+              "page": "murals",
+              "work": "welcome-to-the-jungle"
+            },
+            {
+              "page": "murals",
+              "work": "moon-jaguar"
+            },
+            {
+              "page": "murals",
+              "work": "sagrada"
+            },
+            {
+              "page": "murals",
+              "work": "sun-jaguar"
+            },
+            {
+              "page": "murals",
+              "work": "candy-jungle"
+            }
+          ],
+          "feature": {
+            "page": "murals",
+            "work": "sagrada"
+          }
+        }
+      ],
+      "commission": {
+        "text": "A portrait, a mural, an animal you love.",
+        "sub": "Commission work · portraits · murals · animals",
+        "sealText": "✦ COMMISSIONS OPEN ✦ LET'S TALK ✦ PORTRAITS ✦ MURALS ",
+        "sealLabel": "Commissions open, contact the artist",
+        "page": "contact"
+      }
+    }
+  ]
+}

@@ -1,0 +1,178 @@
+{
+  "slug": "paintings",
+  "title": "Paintings",
+  "layout": "paper",
+  "navParent": "artwork",
+  "seo": {
+    "description": "Oil, acrylic and mixed media paintings by DiArsanima: portraits and archetypes, 2018–2025."
+  },
+  "blocks": [
+    {
+      "id": "heading",
+      "type": "pageHeading",
+      "heading": "Paintings",
+      "numeral": "I",
+      "lead": "Portraits and archetypes in oil, acrylic and mixed media on canvas, painted in Maribor, Florence, Cancún and beyond."
+    },
+    {
+      "id": "works",
+      "type": "gallery",
+      "groups": [
+        {
+          "id": "canvas",
+          "works": [
+            {
+              "id": "fulfilled",
+              "number": "1",
+              "title": "FULFILLED",
+              "details": "100×150 cm, Oil on Canvas, Maribor 2025",
+              "image": {
+                "src": "/uploads/works/paintings/fulfilled.webp",
+                "alt": "Fulfilled, painting by DiArsanima"
+              }
+            },
+            {
+              "id": "the-shaman",
+              "number": "3",
+              "title": "THE SHAMAN",
+              "details": "100×80 cm, Oil on Canvas, Maribor 2023",
+              "image": {
+                "src": "/uploads/works/paintings/the-shaman.webp",
+                "alt": "The Shaman, painting by DiArsanima"
+              }
+            },
+            {
+              "id": "slavic",
+              "number": "4",
+              "title": "SLAVIC",
+              "details": "100×80 cm, Oil on Canvas, Sinji vrh 2023",
+              "image": {
+                "src": "/uploads/works/paintings/slavic.webp",
+                "alt": "Slavic, painting by DiArsanima"
+              }
+            },
+            {
+              "id": "maya",
+              "number": "4a",
+              "title": "MAYA",
+              "details": "60×50 cm, Oil on Canvas, Cancun 2023",
+              "image": {
+                "src": "/uploads/works/paintings/maya.webp",
+                "alt": "Maya, painting by DiArsanima"
+              }
+            },
+            {
+              "id": "charka",
+              "number": "5",
+              "title": "CHARKA",
+              "details": "70×50 cm, Oil on Canvas, Maribor 2023",
+              "image": {
+                "src": "/uploads/works/paintings/charka.webp",
+                "alt": "Charka, painting by DiArsanima"
+              }
+            },
+            {
+              "id": "malak",
+              "number": "6",
+              "title": "MALAK",
+              "details": "90×70 cm, Oil on Canvas, Maribor 2023",
+              "image": {
+                "src": "/uploads/works/paintings/malak.webp",
+                "alt": "Malak, painting by DiArsanima"
+              }
+            },
+            {
+              "id": "mary-magdalene",
+              "number": "4b",
+              "title": "MARY MAGDALENE",
+              "details": "40×30 cm, Oil on Canvas, Maribor 2023",
+              "image": {
+                "src": "/uploads/works/paintings/mary-magdalene.webp",
+                "alt": "Mary Magdalene, painting by DiArsanima"
+              }
+            },
+            {
+              "id": "the-underwater-man",
+              "number": "7",
+              "title": "THE UNDERWATER MAN",
+              "details": "60×60 cm, Oil on Canvas, Fiesa 2023",
+              "image": {
+                "src": "/uploads/works/paintings/the-underwater-man.webp",
+                "alt": "The Underwater Man, painting by DiArsanima"
+              }
+            },
+            {
+              "id": "mama",
+              "number": "8",
+              "title": "MAMA",
+              "details": "70×50 cm, Oil on Canvas, Maribor 2022",
+              "image": {
+                "src": "/uploads/works/paintings/mama.webp",
+                "alt": "Mama, painting by DiArsanima"
+              }
+            },
+            {
+              "id": "an-angels-judgement",
+              "number": "9",
+              "title": "AN ANGEL'S JUDGEMENT",
+              "details": "50×70 cm, Oil on Canvas, Florence 2022",
+              "image": {
+                "src": "/uploads/works/paintings/an-angels-judgement.webp",
+                "alt": "An Angel'S Judgement, painting by DiArsanima"
+              }
+            },
+            {
+              "id": "goldhorn",
+              "number": "10",
+              "title": "GOLDHORN",
+              "details": "100×130 cm, Mixed Media on Canvas, Maribor 2021",
+              "image": {
+                "src": "/uploads/works/paintings/goldhorn.webp",
+                "alt": "Goldhorn, painting by DiArsanima"
+              }
+            },
+            {
+              "id": "the-unicorn",
+              "number": "11",
+              "title": "THE UNICORN",
+              "details": "90×130 cm, Mixed Media on Canvas, Maribor 2019",
+              "image": {
+                "src": "/uploads/works/paintings/the-unicorn.webp",
+                "alt": "The Unicorn, painting by DiArsanima"
+              }
+            },
+            {
+              "id": "crane-lady",
+              "number": "12",
+              "title": "CRANE LADY",
+              "details": "140×90 cm, Mixed Media on Canvas, Maribor 2019",
+              "image": {
+                "src": "/uploads/works/paintings/crane-lady.webp",
+                "alt": "Crane Lady, painting by DiArsanima"
+              }
+            },
+            {
+              "id": "golden-lady",
+              "number": "13",
+              "title": "GOLDEN LADY",
+              "details": "100×150 cm, Acrylic on Canvas, Ljubljana 2018",
+              "image": {
+                "src": "/uploads/works/paintings/golden-lady.webp",
+                "alt": "Golden Lady, painting by DiArsanima"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "commission-cta",
+      "type": "cta",
+      "text": "A portrait, a mural, an animal you love.",
+      "sub": "Commission work · portraits · murals · animals",
+      "sealText": "✦ COMMISSIONS OPEN ✦ LET'S TALK ✦ PORTRAITS ✦ MURALS ",
+      "sealLabel": "Commissions open, contact the artist",
+      "page": "contact"
+    }
+  ]
+}

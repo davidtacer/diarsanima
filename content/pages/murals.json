@@ -1,0 +1,98 @@
+{
+  "slug": "murals",
+  "title": "Murals",
+  "layout": "paper",
+  "navParent": "artwork",
+  "seo": {
+    "description": "Commissioned murals by DiArsanima in Slovenia and Mexico."
+  },
+  "blocks": [
+    {
+      "id": "heading",
+      "type": "pageHeading",
+      "heading": "Murals",
+      "numeral": "III",
+      "lead": "Commissioned walls for living rooms, bedrooms and residencies in Slovenia and Mexico."
+    },
+    {
+      "id": "works",
+      "type": "gallery",
+      "groups": [
+        {
+          "id": "walls",
+          "works": [
+            {
+              "id": "welcome-to-the-jungle",
+              "number": "1",
+              "title": "WELCOME TO THE JUNGLE",
+              "details": "Commission work for living room, Maribor, Slovenia",
+              "image": {
+                "src": "/uploads/works/murals/welcome-to-the-jungle.webp",
+                "alt": "Welcome To The Jungle, mural by DiArsanima"
+              }
+            },
+            {
+              "id": "moon-jaguar",
+              "number": "2",
+              "title": "MOON JAGUAR",
+              "details": "Commission work for bedroom, 250×230 cm, Ciudad de Mexico, Mexico",
+              "image": {
+                "src": "/uploads/works/murals/moon-jaguar.webp",
+                "alt": "Moon Jaguar, mural by DiArsanima"
+              }
+            },
+            {
+              "id": "sagrada",
+              "number": "3",
+              "title": "SAGRADA",
+              "details": "Mural for art residency in Villas Otoch Paraiso, Cancun, Mexico",
+              "image": {
+                "src": "/uploads/works/murals/sagrada.webp",
+                "alt": "Sagrada, mural by DiArsanima"
+              }
+            },
+            {
+              "id": "sun-jaguar",
+              "number": "4",
+              "title": "SUN JAGUAR",
+              "details": "Commission work for living room, 150×200 cm, Ciudad de Mexico, Mexico",
+              "image": {
+                "src": "/uploads/works/murals/sun-jaguar.webp",
+                "alt": "Sun Jaguar, mural by DiArsanima"
+              }
+            },
+            {
+              "id": "candy-jungle",
+              "number": "5",
+              "title": "CANDY JUNGLE",
+              "details": "Commission work for dining room, 270×350 cm, Kamnik, Slovenia",
+              "image": {
+                "src": "/uploads/works/murals/candy-jungle.webp",
+                "alt": "Candy Jungle, mural by DiArsanima"
+              }
+            },
+            {
+              "id": "perseus",
+              "number": "6",
+              "title": "PERSEUS",
+              "details": "Reproduction after Joseph Blanc, commission work for living room, 280×150 cm, Maribor, Slovenia",
+              "image": {
+                "src": "/uploads/works/murals/perseus.webp",
+                "alt": "Perseus, mural by DiArsanima"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "commission-cta",
+      "type": "cta",
+      "text": "A portrait, a mural, an animal you love.",
+      "sub": "Commission work · portraits · murals · animals",
+      "sealText": "✦ COMMISSIONS OPEN ✦ LET'S TALK ✦ PORTRAITS ✦ MURALS ",
+      "sealLabel": "Commissions open, contact the artist",
+      "page": "contact"
+    }
+  ]
+}

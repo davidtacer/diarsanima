@@ -1,15 +1,18 @@
 "use client";
 
 import { useEffect, useRef } from "react";
-import { assets } from "@/lib/site";
 
-/** Krožni kurzor z logotipom, ki z zamikom sledi miški. */
-export default function CustomCursor() {
+/**
+ * Krožni kurzor z logotipom, ki z zamikom sledi miški.
+ * Krog je izrisan v polni velikosti (72 px) in v mirovanju pomanjšan (scale 0.64), zato je ob povečanju nad povezavo oster.
+ */
+export default function CustomCursor({ image }: { image: string }) {
   const ring = useRef<HTMLDivElement>(null);
   const dot = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    if (!window.matchMedia("(hover: hover) and (pointer: fine)").matches) return;
+    if (!window.matchMedia("(hover: hover) and (pointer: fine)").matches)
+      return;
     document.documentElement.classList.add("has-custom-cursor");
 
     const target = { x: window.innerWidth / 2, y: window.innerHeight / 2 };
@@ -30,7 +33,8 @@ export default function CustomCursor() {
         pos.y = target.y;
         set("visible", true);
       }
-      if (dot.current) dot.current.style.transform = `translate3d(${target.x}px, ${target.y}px, 0)`;
+      if (dot.current)
+        dot.current.style.transform = `translate3d(${target.x}px, ${target.y}px, 0)`;
       const el = e.target as HTMLElement | null;
       set("hover", !!el?.closest("a, button, [data-cursor='hover']"));
     };
@@ -44,7 +48,8 @@ export default function CustomCursor() {
     const tick = () => {
       pos.x += (target.x - pos.x) * 0.16;
       pos.y += (target.y - pos.y) * 0.16;
-      if (ring.current) ring.current.style.transform = `translate3d(${pos.x}px, ${pos.y}px, 0)`;
+      if (ring.current)
+        ring.current.style.transform = `translate3d(${pos.x}px, ${pos.y}px, 0)`;
       raf = requestAnimationFrame(tick);
     };
     raf = requestAnimationFrame(tick);
@@ -70,11 +75,15 @@ export default function CustomCursor() {
     <>
       <div ref={ring} className={`group size-0 ${base}`} aria-hidden>
         <div
-          className="absolute -left-5 -top-5 size-10 rounded-full border border-white/85 bg-[length:70%] bg-center bg-no-repeat transition-[transform,background-color] duration-[350ms] ease-[cubic-bezier(0.2,0.8,0.2,1)] group-data-[hover=true]:scale-[1.7] group-data-[hover=true]:bg-white/10 group-data-[down=true]:scale-[0.85]"
-          style={{ backgroundImage: `url(${assets.cursor})` }}
+          className="absolute -left-9 -top-9 size-18 scale-[0.64] rounded-full border-[1.5px] border-white/85 bg-[length:88%] bg-center bg-no-repeat transition-[scale,background-color] duration-[350ms] ease-[cubic-bezier(0.2,0.8,0.2,1)] group-data-[hover=true]:scale-100 group-data-[hover=true]:bg-white/10 group-data-[down=true]:scale-[0.56]"
+          style={{ backgroundImage: `url(${image})` }}
         />
       </div>
-      <div ref={dot} className={`-ml-0.5 -mt-0.5 size-1 rounded-full bg-white ${base}`} aria-hidden />
+      <div
+        ref={dot}
+        className={`-ml-0.5 -mt-0.5 size-1 rounded-full bg-white ${base}`}
+        aria-hidden
+      />
     </>
   );
 }

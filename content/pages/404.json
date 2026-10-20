@@ -1,0 +1,13 @@
+{
+  "slug": "404",
+  "title": "Page not found",
+  "layout": "paper",
+  "blocks": [
+    {
+      "id": "heading",
+      "type": "pageHeading",
+      "heading": "Lost in the archive",
+      "lead": "This page does not exist. Return to the [intro](page:index) or browse the [artwork](page:artwork)."
+    }
+  ]
+}

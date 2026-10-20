@@ -1,49 +1,40 @@
-# DiArsanima — Next.js
+# DiArsanima
 
-Prenos strani diarsanima.com (WordPress/Elementor) v Next.js 15 (App Router, TypeScript) + Tailwind CSS v4.
-Brez dodatnih knjižnic za animacije. Keyframe animacije so definirane v `src/app/globals.css` (`@theme`).
+Spletna stran umetnice DiArsanima. Next.js 15 (statični izvoz) + Tailwind v4, zgrajena po **`docs/PRAVILA-GRADNJE.md`** (urejevalnik Inženirji.si).
 
-## Zagon
+- Vsa vsebina je v `content/` (site.json + strani), slike v `public/uploads/`. Koda samo izriše vsebino.
+- Bloki: `src/blocks/<Ime>/` (komponenta, zod shema, opis za AI), register v `src/blocks/registry.ts`.
+- Tema (barve, pisave, animacije po CGP): `src/themes/diarsanima.css`. Pisave so lokalne (`@fontsource`).
+- Navodila za AI urejevalnik: `CLAUDE.md`.
+
+## Ukazi
 
 ```bash
-npm install
-npm run dev
+yarn install
+yarn uploads:wp   # enkratno: prenese slike del z WordPressa v public/uploads (nato commitaj)
+yarn dev
+yarn check        # validate + catalog + tsc + lint + build (obvezno pred commitom)
+yarn validate --json
+yarn uploads public/uploads/<datoteka>   # nova slika → WebP + velikosti
 ```
 
-Slike so v `public/images`. **Portret na /home** (`homeBanner.png`) se zaenkrat nalaga z
-diarsanima.com. Ko ga shraniš v `public/images/homeBanner.png`, spremeni `homePortrait` v `src/lib/site.ts`.
-`npm run assets` prenese vse slike (vključno s homeBanner) z WP strani, dokler ta še obstaja.
+`NEXT_PUBLIC_ENV=production` samo za objavo na `main`. Brez nje stran vrne `noindex`, `robots.txt` z `Disallow: /` in prazen sitemap.
 
 ## Animacije
 
-| Stran | Komponenta | Kaj dela |
-|---|---|---|
-| `/` | `src/components/GlitchIntro.tsx` | Ozadje počasi "diha", naključni vodoravni glitch trakovi (izrezi iste slike, zamik + hue/RGB), tiger se ob večjem rafalu strese. |
-| `/home` | `src/components/ShatterHome.tsx` | Portret je mreža 6×7 ploščic. EXPLORE → ploščice se razletijo, zatemnijo in lebdijo, pojavi se meni. BACK (ali Esc) → sestavijo se nazaj. |
-| vse | `src/components/CustomCursor.tsx` | Krožni kurzor z logotipom, z zamikom sledi miški, poveča se nad povezavami (samo na napravah z miško). |
+| Blok | Kje | Kaj dela |
+| --- | --- | --- |
+| `glitchIntro` | `/` | ozadje "diha", glitch trakovi, tiger se ob rafalu strese |
+| `shatterMenu` | `/home` | portret iz 6×7 ploščic se razleti v meni, Back ga sestavi |
+| `catalogue` | `/artwork` | ob prehodu z miško se delo "dvigne iz arhiva" |
+| kurzor | povsod | krožni pečat sledi miški |
 
-Nastavitve:
-- Število ploščic: `COLS` / `ROWS` v `ShatterHome.tsx` (+ `grid-cols-6 grid-rows-7`).
-- Velikost portreta: `h-[70vh] w-[min(44vw,640px)]` v `ShatterHome.tsx`.
-- Velikost tigra: `w-[min(100vw,190vh)]` v `GlitchIntro.tsx`.
-- Razlet, motnost, zamiki: `makeTiles()` v `ShatterHome.tsx`.
-- Pogostost glitcha: `burst()` v `GlitchIntro.tsx`.
-- Kam vodi "EXPLORE?" na intro strani: `introExploreHref` v `src/lib/site.ts` (na živi strani vodi na `/artwork`).
-- Pisavi: Bodoni Moda (meni/naslovi) + Jost (drobno besedilo) iz Google Fonts, v `layout.tsx`. Zamenjaš ju tam in v `@theme` v `globals.css`.
+## Gostovanje
 
-Spoštuje `prefers-reduced-motion`.
+Cloudflare Pages po **`docs/NAMESTITEV-UREJEVALNIKA.md`**: production branch `main`, preview samo `dev`, build `yarn build`, output `out`, `NODE_VERSION=22`.
+`scripts/postbuild.ts` glede na `CF_PAGES_BRANCH` zapiše `_headers`, `robots.txt` in sitemap (testna stran je skrita).
+Urejevalnik: `/uredi` (iframe na uredi.inzenirji.si, `SITE_ID` v `src/config/site-id.ts`).
 
-## Kaj je še TODO
+## Git
 
-Strani `/artwork`, `/about-artist`, `/contact` in `/portfolio/[slug]` imajo strukturo in naslove;
-besedila, galerije in pravi e-naslov je treba prenesti iz WP (označeno s `TODO`).
-
-## Podstrani (CGP tema "Platno")
-
-Vse podstrani (`/artwork`, `/about-artist`, `/contact`, `/portfolio/*`) uporabljajo `src/components/paper/PaperShell.tsx`:
-svetlo platno, zrno, vodni žig `artSidebar.png` in meni z rimskimi številkami. CGP: priročnik DiArsanima (artifact).
-
-- `/artwork`: katalog (`paper/ArtworkCatalogue.tsx`). Vsaka kategorija ima niz sličic. Pod miško se naslov obarva in
-  postane ležeč, sličice dobijo barve, izbrano delo (`feature`) se "dvigne iz arhiva".
-- Seznam vseh del (naslovi, mere, tehnike, poti) je v `src/lib/works.ts`, povzet po WP portfoliu.
-  Slike se nalagajo z `diarsanima.com/wp-content/uploads`. Za lokalne kopije nastavi `NEXT_PUBLIC_WP_UPLOADS`.
+Gradnja na `build/diarsanima` → merge v `dev` → `main` (objava) po uspešnem CI (`.github/workflows/check.yml`).

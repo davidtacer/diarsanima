@@ -1,7 +1,14 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
-  /* config options here */
+  // Statični izvoz samo za build (brez API poti, strežniških funkcij in middleware).
+  // V `yarn dev` ga ne vklopimo, ker Next sicer na poteh, ki niso strani
+  // (npr. /.well-known/… iz Chroma, hot-update), javlja "missing param in generateStaticParams".
+  output: process.env.NODE_ENV === "production" ? "export" : undefined,
+  trailingSlash: true,
+  images: { unoptimized: true },
+  // CSS vgrajen v HTML: brez dodatne zahteve, ki blokira izris
+  experimental: { inlineCss: true },
 };
 
 export default nextConfig;

@@ -1,0 +1,385 @@
+{
+  "slug": "digital-artwork",
+  "title": "Digital Artwork",
+  "layout": "paper",
+  "navParent": "artwork",
+  "seo": {
+    "description": "Digital collages and the archetype series of digital paintings by DiArsanima."
+  },
+  "blocks": [
+    {
+      "id": "heading",
+      "type": "pageHeading",
+      "heading": "Digital Artwork",
+      "numeral": "II",
+      "lead": "Digital collages and *the archetype series*, sixteen digital paintings, each a woman and the quality she carries."
+    },
+    {
+      "id": "works",
+      "type": "gallery",
+      "groups": [
+        {
+          "id": "collages",
+          "label": "Digital Collages",
+          "works": [
+            {
+              "id": "dream-joy",
+              "number": "1",
+              "title": "DREAM JOY",
+              "details": "Digital Collage",
+              "image": {
+                "src": "/uploads/works/digital-artwork/dream-joy.webp",
+                "alt": "Dream Joy, digital collage by DiArsanima"
+              }
+            },
+            {
+              "id": "alone",
+              "number": "2",
+              "title": "ALONE",
+              "details": "Digital Collage",
+              "image": {
+                "src": "/uploads/works/digital-artwork/alone.webp",
+                "alt": "Alone, digital collage by DiArsanima"
+              }
+            },
+            {
+              "id": "free",
+              "number": "3",
+              "title": "FREE",
+              "details": "Digital Collage",
+              "image": {
+                "src": "/uploads/works/digital-artwork/free.webp",
+                "alt": "Free, digital collage by DiArsanima"
+              }
+            },
+            {
+              "id": "bird-of-paradise",
+              "number": "4",
+              "title": "BIRD OF PARADISE",
+              "details": "Digital Collage",
+              "image": {
+                "src": "/uploads/works/digital-artwork/bird-of-paradise.webp",
+                "alt": "Bird Of Paradise, digital collage by DiArsanima"
+              }
+            },
+            {
+              "id": "venice",
+              "number": "5",
+              "title": "VENICE",
+              "details": "Digital Collage",
+              "image": {
+                "src": "/uploads/works/digital-artwork/venice.webp",
+                "alt": "Venice, digital collage by DiArsanima"
+              }
+            },
+            {
+              "id": "in-between",
+              "number": "6",
+              "title": "IN BETWEEN",
+              "details": "Digital Collage",
+              "image": {
+                "src": "/uploads/works/digital-artwork/in-between.webp",
+                "alt": "In Between, digital collage by DiArsanima"
+              }
+            },
+            {
+              "id": "the-unicorn",
+              "number": "7",
+              "title": "THE UNICORN",
+              "details": "Collage",
+              "image": {
+                "src": "/uploads/works/digital-artwork/the-unicorn.webp",
+                "alt": "The Unicorn, digital collage by DiArsanima"
+              }
+            },
+            {
+              "id": "sagrada",
+              "number": "8",
+              "title": "SAGRADA",
+              "details": "Collage",
+              "image": {
+                "src": "/uploads/works/digital-artwork/sagrada.webp",
+                "alt": "Sagrada, digital collage by DiArsanima"
+              }
+            },
+            {
+              "id": "lady-of-the-dawn",
+              "number": "9",
+              "title": "LADY OF THE DAWN",
+              "details": "Digital Collage",
+              "image": {
+                "src": "/uploads/works/digital-artwork/lady-of-the-dawn.webp",
+                "alt": "Lady Of The Dawn, digital collage by DiArsanima"
+              }
+            },
+            {
+              "id": "the-mother",
+              "number": "10",
+              "title": "THE MOTHER",
+              "details": "Digital Collage",
+              "image": {
+                "src": "/uploads/works/digital-artwork/the-mother.webp",
+                "alt": "The Mother, digital collage by DiArsanima"
+              }
+            },
+            {
+              "id": "the-spirit",
+              "number": "11",
+              "title": "THE SPIRIT",
+              "details": "Digital Collage",
+              "image": {
+                "src": "/uploads/works/digital-artwork/the-spirit.webp",
+                "alt": "The Spirit, digital collage by DiArsanima"
+              }
+            },
+            {
+              "id": "holy-doodle",
+              "number": "12",
+              "title": "HOLY DOODLE",
+              "details": "Digital Collage",
+              "image": {
+                "src": "/uploads/works/digital-artwork/holy-doodle.webp",
+                "alt": "Holy Doodle, digital collage by DiArsanima"
+              }
+            },
+            {
+              "id": "offering-grace",
+              "number": "13",
+              "title": "OFFERING GRACE",
+              "details": "Digital Collage",
+              "image": {
+                "src": "/uploads/works/digital-artwork/offering-grace.webp",
+                "alt": "Offering Grace, digital collage by DiArsanima"
+              }
+            },
+            {
+              "id": "the-tower",
+              "number": "14",
+              "title": "THE TOWER",
+              "details": "Digital Collage",
+              "image": {
+                "src": "/uploads/works/digital-artwork/the-tower.webp",
+                "alt": "The Tower, digital collage by DiArsanima"
+              }
+            },
+            {
+              "id": "virgo",
+              "number": "15",
+              "title": "VIRGO",
+              "details": "Digital Collage",
+              "image": {
+                "src": "/uploads/works/digital-artwork/virgo.webp",
+                "alt": "Virgo, digital collage by DiArsanima"
+              }
+            },
+            {
+              "id": "the-shadows",
+              "number": "16",
+              "title": "THE SHADOWS",
+              "details": "Digital Collage",
+              "image": {
+                "src": "/uploads/works/digital-artwork/the-shadows.webp",
+                "alt": "The Shadows, digital collage by DiArsanima"
+              }
+            },
+            {
+              "id": "snake-body",
+              "number": "17",
+              "title": "SNAKE BODY",
+              "details": "Digital Collage",
+              "image": {
+                "src": "/uploads/works/digital-artwork/snake-body.webp",
+                "alt": "Snake Body, digital collage by DiArsanima"
+              }
+            },
+            {
+              "id": "monkey",
+              "number": "18",
+              "title": "MONKEY",
+              "details": "Digital Collage",
+              "image": {
+                "src": "/uploads/works/digital-artwork/monkey.webp",
+                "alt": "Monkey, digital collage by DiArsanima"
+              }
+            }
+          ]
+        },
+        {
+          "id": "archetypes",
+          "label": "Digital Paintings · the archetype series",
+          "works": [
+            {
+              "id": "blanket",
+              "number": "1",
+              "title": "BLANKET",
+              "details": "Family and Security, Digital Painting",
+              "image": {
+                "src": "/uploads/works/digital-artwork/blanket.webp",
+                "alt": "Blanket, digital painting by DiArsanima"
+              }
+            },
+            {
+              "id": "maggie",
+              "number": "2",
+              "title": "MAGGIE",
+              "details": "Curiosity and Learning, Digital Painting",
+              "image": {
+                "src": "/uploads/works/digital-artwork/maggie.webp",
+                "alt": "Maggie, digital painting by DiArsanima"
+              }
+            },
+            {
+              "id": "alexa",
+              "number": "3",
+              "title": "ALEXA",
+              "details": "Confidence and Expression, Digital Painting",
+              "image": {
+                "src": "/uploads/works/digital-artwork/alexa.webp",
+                "alt": "Alexa, digital painting by DiArsanima"
+              }
+            },
+            {
+              "id": "suki",
+              "number": "3b",
+              "title": "SUKI",
+              "details": "Culture and Tradition, Digital Painting",
+              "image": {
+                "src": "/uploads/works/digital-artwork/suki.webp",
+                "alt": "Suki, digital painting by DiArsanima"
+              }
+            },
+            {
+              "id": "lolita",
+              "number": "4",
+              "title": "LOLITA",
+              "details": "Vanity and Charm, Digital Painting",
+              "image": {
+                "src": "/uploads/works/digital-artwork/lolita.webp",
+                "alt": "Lolita, digital painting by DiArsanima"
+              }
+            },
+            {
+              "id": "angelice",
+              "number": "5",
+              "title": "ANGELICE",
+              "details": "Art and Creativity, Digital Painting",
+              "image": {
+                "src": "/uploads/works/digital-artwork/angelice.webp",
+                "alt": "Angelice, digital painting by DiArsanima"
+              }
+            },
+            {
+              "id": "sunny",
+              "number": "5a",
+              "title": "SUNNY",
+              "details": "Innocence and Simplicity, Digital Painting",
+              "image": {
+                "src": "/uploads/works/digital-artwork/sunny.webp",
+                "alt": "Sunny, digital painting by DiArsanima"
+              }
+            },
+            {
+              "id": "ivana",
+              "number": "5b",
+              "title": "IVANA",
+              "details": "Letting Go and Cleansing, Digital Painting",
+              "image": {
+                "src": "/uploads/works/digital-artwork/ivana.webp",
+                "alt": "Ivana, digital painting by DiArsanima"
+              }
+            },
+            {
+              "id": "pepper",
+              "number": "6",
+              "title": "PEPPER",
+              "details": "Purpose and Discovery, Digital Painting",
+              "image": {
+                "src": "/uploads/works/digital-artwork/pepper.webp",
+                "alt": "Pepper, digital painting by DiArsanima"
+              }
+            },
+            {
+              "id": "nuba",
+              "number": "7",
+              "title": "NUBA",
+              "details": "Authenticity and Courage, Digital Painting",
+              "image": {
+                "src": "/uploads/works/digital-artwork/nuba.webp",
+                "alt": "Nuba, digital painting by DiArsanima"
+              }
+            },
+            {
+              "id": "voodoo",
+              "number": "8",
+              "title": "VOODOO",
+              "details": "Myth and Ritual, Digital Painting",
+              "image": {
+                "src": "/uploads/works/digital-artwork/voodoo.webp",
+                "alt": "Voodoo, digital painting by DiArsanima"
+              }
+            },
+            {
+              "id": "gea",
+              "number": "9",
+              "title": "GEA",
+              "details": "Nature and Connection, Digital Painting",
+              "image": {
+                "src": "/uploads/works/digital-artwork/gea.webp",
+                "alt": "Gea, digital painting by DiArsanima"
+              }
+            },
+            {
+              "id": "iris",
+              "number": "9a",
+              "title": "IRIS",
+              "details": "Peace and Quiet, Digital Painting",
+              "image": {
+                "src": "/uploads/works/digital-artwork/iris.webp",
+                "alt": "Iris, digital painting by DiArsanima"
+              }
+            },
+            {
+              "id": "sheeba",
+              "number": "10",
+              "title": "SHEEBA",
+              "details": "Intuition and Mystery, Digital Painting",
+              "image": {
+                "src": "/uploads/works/digital-artwork/sheeba.webp",
+                "alt": "Sheeba, digital painting by DiArsanima"
+              }
+            },
+            {
+              "id": "allegra",
+              "number": "11",
+              "title": "ALLEGRA",
+              "details": "Power and Grace, Digital Painting",
+              "image": {
+                "src": "/uploads/works/digital-artwork/allegra.webp",
+                "alt": "Allegra, digital painting by DiArsanima"
+              }
+            },
+            {
+              "id": "samira",
+              "number": "12",
+              "title": "SAMIRA",
+              "details": "Ellegance and Beauty, Digital Painting",
+              "image": {
+                "src": "/uploads/works/digital-artwork/samira.webp",
+                "alt": "Samira, digital painting by DiArsanima"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "commission-cta",
+      "type": "cta",
+      "text": "A portrait, a mural, an animal you love.",
+      "sub": "Commission work · portraits · murals · animals",
+      "sealText": "✦ COMMISSIONS OPEN ✦ LET'S TALK ✦ PORTRAITS ✦ MURALS ",
+      "sealLabel": "Commissions open, contact the artist",
+      "page": "contact"
+    }
+  ]
+}

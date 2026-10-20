@@ -1,0 +1,169 @@
+/*
+ * Tema stranke DiArsanima (preset "diarsanima" v content/site.json).
+ * Tema je koda, ne vsebina: barve, pisave, sence, animacije. Bloki uporabljajo samo te žetone.
+ * Vir: CGP priročnik DiArsanima.
+ */
+/* latinica je v src/themes/fonts.ts (next/font/local); tu samo latin-ext (č, š, ž), naloži se le po potrebi */
+@import "@fontsource/bodoni-moda/latin-ext-400.css";
+@import "@fontsource/bodoni-moda/latin-ext-400-italic.css";
+@import "@fontsource/bodoni-moda/latin-ext-700.css";
+@import "@fontsource/bodoni-moda/latin-ext-900.css";
+@import "@fontsource/jost/latin-ext-300.css";
+@import "@fontsource/jost/latin-ext-400.css";
+@import "@fontsource/jost/latin-ext-500.css";
+
+/* Podpis Inženirji.si: JetBrains Mono (OFL), podnabor samo za znake "inzenirji.s_" */
+@font-face {
+  font-family: "JetBrains Mono";
+  src: url("./fonts/jetbrains-mono-signature.woff2") format("woff2");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@theme {
+  --color-ink: #000;
+  --color-bone: #f4efe8;
+  --color-bone-muted: rgb(244 239 232 / 0.6);
+
+  /* CGP DiArsanima — tema "Platno" (podstrani) */
+  --color-paper: #efe9df;
+  --color-paper-raised: #e4ddd0;
+  --color-char: #16161a;
+  --color-char-soft: #56554f;
+  --color-rule: rgb(22 22 26 / 0.18);
+  --color-gold: #7f6232;
+  --color-rose: #9e3e59;
+  --color-ochre: #a95f12;
+  --color-sage: #5f6e52;
+  --color-moss: #46603a;
+  --color-bark: #5a4a3c;
+
+  /* podpis Inženirji.si (sekcija 12): na temnih delih neon zelena, na platnu temnejša zelena */
+  --color-signature: #00ff41;
+  --font-signature: "JetBrains Mono", ui-monospace, monospace;
+
+  /* posebni toni intro in /home */
+  --color-intro-night: #1a0a1e;
+  --color-disc: #f5f2ee;
+
+  /* sence (CGP: edina senca je mehka senca obešenega dela) */
+  --shadow-paper: 0 24px 60px rgb(40 30 20 / 0.18);
+  --shadow-paper-lift: 0 24px 60px rgb(40 30 20 / 0.25);
+  --shadow-glitch: inset 0 0 0 9999px rgb(40 120 255 / 0.12);
+
+  --font-display: var(--font-bodoni), "Bodoni Moda", "Didot", serif;
+  --font-sans: var(--font-jost), "Jost", "Helvetica Neue", Arial, sans-serif;
+
+  --ease-shatter: cubic-bezier(0.7, 0, 0.2, 1);
+  --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-spring: cubic-bezier(0.2, 1.4, 0.4, 1);
+
+  --animate-breathe: breathe 18s ease-in-out infinite alternate;
+  --animate-float: float 7s ease-in-out infinite;
+  --animate-fade-blur: fade-blur 1.6s 0.3s ease both;
+  --animate-rise: rise 1.2s ease backwards;
+  --animate-pop: pop 0.9s 0.9s cubic-bezier(0.2, 1.4, 0.4, 1) backwards;
+  --animate-orbit: spin 9s linear infinite;
+  --animate-orbit-reverse: spin 14s linear infinite reverse;
+  --animate-drift: drift var(--drift, 10s) ease-in-out infinite alternate;
+  --animate-enter: enter 0.9s ease both;
+  --animate-seal: spin 14s linear infinite;
+  --animate-drip: drip 1.8s cubic-bezier(0.7, 0, 0.2, 1) backwards;
+
+  @keyframes breathe {
+    from {
+      transform: scale(1) translate3d(0, 0, 0);
+    }
+    to {
+      transform: scale(1.06) translate3d(-0.8%, -0.6%, 0);
+    }
+  }
+  @keyframes float {
+    0%,
+    100% {
+      translate: 0 0;
+    }
+    50% {
+      translate: 0 -10px;
+    }
+  }
+  @keyframes fade-blur {
+    from {
+      opacity: 0;
+      filter: blur(6px);
+    }
+    to {
+      opacity: 1;
+      filter: blur(0);
+    }
+  }
+  @keyframes rise {
+    from {
+      opacity: 0;
+      translate: 0 16px;
+    }
+  }
+  @keyframes pop {
+    from {
+      opacity: 0;
+      scale: 0.6;
+    }
+  }
+  @keyframes drift {
+    to {
+      transform: translate3d(var(--ddx, 0), var(--ddy, 0), 0);
+    }
+  }
+  @keyframes spin {
+    to {
+      transform: rotate(360deg);
+    }
+  }
+  @keyframes drip {
+    from {
+      stroke-dashoffset: 200;
+    }
+  }
+  @keyframes enter {
+    from {
+      opacity: 0;
+      transform: translateY(14px);
+    }
+  }
+}
+
+/* ozadja, ki jih ni mogoče zapisati z enim žetonom */
+@utility bg-grain {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='3'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+@utility bg-intro-vignette {
+  background-image: radial-gradient(ellipse at 50% 50%, transparent 40%, rgb(10 0 15 / 0.55) 100%);
+}
+@utility drop-shadow-tiger {
+  filter: drop-shadow(0 0 6px rgb(255 255 255 / 0.15));
+}
+@utility drop-shadow-glitch {
+  filter: drop-shadow(-3px 0 0 rgb(255 0 80 / 0.6)) drop-shadow(3px 0 0 rgb(0 200 255 / 0.6));
+}
+@utility text-glow {
+  text-shadow: 0 0 24px rgb(255 255 255 / 0.35);
+}
+
+/* podpis Inženirji.si */
+.signature[data-tone="paper"] {
+  --color-signature: #1f7a3a;
+}
+.signature-cursor {
+  animation: sig-blink 1s steps(1) infinite;
+}
+@keyframes sig-blink {
+  50% {
+    opacity: 0;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .signature-cursor {
+    animation: none;
+  }
+}

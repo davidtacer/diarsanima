@@ -1,0 +1,29 @@
+{
+  "slug": "index",
+  "title": "DiArsanima – a showcase of mystical and human-inspired art.",
+  "layout": "intro",
+  "seo": {
+    "description": "DiArsanima – a showcase of mystical and human-inspired art."
+  },
+  "blocks": [
+    {
+      "id": "intro",
+      "type": "glitchIntro",
+      "heading": "DiArsanima – a showcase of mystical and human-inspired art.",
+      "background": {
+        "src": "/uploads/intro-banner.webp",
+        "alt": "Painted desert dunes under a swirling red and blue sky"
+      },
+      "tiger": {
+        "src": "/uploads/tiger.webp",
+        "alt": "White line drawing of a leaping winged tiger"
+      },
+      "tigerMobile": {
+        "src": "/uploads/tiger-mobile.webp",
+        "alt": "White line drawing of a leaping winged tiger"
+      },
+      "exploreLabel": "Explore?",
+      "explorePage": "artwork"
+    }
+  ]
+}

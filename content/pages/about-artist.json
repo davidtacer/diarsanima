@@ -1,0 +1,140 @@
+{
+  "slug": "about-artist",
+  "title": "About Artist",
+  "layout": "paper",
+  "seo": {
+    "description": "DiArsanima (DiA), multidisciplinary visual artist from Maribor: painting, digital art and murals."
+  },
+  "blocks": [
+    {
+      "id": "heading",
+      "type": "pageHeading",
+      "heading": "About Artist"
+    },
+    {
+      "id": "intro",
+      "type": "text",
+      "variant": "lead",
+      "body": "Welcome to the artistic landscape of DiArsanima!\n\nOr *DiA* for short.\n\nI'm a multidisciplinary visual artist whose main objective is to build my own menagerie of archetypes, which are created with traditional or digital techniques and share them with the world. Join me in digging deep into our collective human psyche and explore the symbols which I integrate into predominantly portraits of imagined or real women, that encompass traits of our ancestors, rituals, big and small stories. My artwork is a result of lifelong study of human experience on symbolic level through combining myth with contemporary reality through the *fierce divine feminine.*",
+      "showSignature": true,
+      "imageSide": "right",
+      "image": {
+        "src": "/uploads/artist-portrait.webp",
+        "alt": "Collage portrait of a woman with a pink rose and wings in her hair, holding an iris",
+        "focal": "top"
+      }
+    },
+    {
+      "id": "fields",
+      "type": "text",
+      "variant": "body",
+      "body": "I specialize in three fields:\n\n- Classical old and new master's techniques (after studying Rubens, Caravaggio, Rembrandt, Titian, Freud and Lorca) with oils on canvas. Acrylics and even mixed media;\n- Digital art by using computer programs, graphic design and illustration;\n- Grand scale art such as murals, interior and exterior wall paintings.",
+      "imageSide": "left",
+      "image": {
+        "src": "/uploads/about/artist-with-jaguar.webp",
+        "alt": "DiArsanima seated in front of her painting of a jaguar in a tropical jungle"
+      }
+    },
+    {
+      "id": "services",
+      "type": "cards",
+      "heading": "Services I Craft for My Clients",
+      "lead": "Turning Imagination into Masterpieces",
+      "items": [
+        {
+          "id": "commission-work",
+          "title": "Commission Work",
+          "description": "on Murals, Portraits, Landscapes and Animals in Different Styles or Techniques",
+          "image": {
+            "src": "/uploads/services/commission-work.webp",
+            "alt": "Painted portrait of a man next to the model himself"
+          },
+          "page": "contact"
+        },
+        {
+          "id": "courses",
+          "title": "Courses, Workshops, Mentorship",
+          "description": "for Creating, Painting and Drawing",
+          "image": {
+            "src": "/uploads/services/courses.webp",
+            "alt": "Painting of a hare lying on the ground"
+          },
+          "page": "contact"
+        },
+        {
+          "id": "digital-art",
+          "title": "Digital Art, Graphic Design, Illustration",
+          "image": {
+            "src": "/uploads/services/digital-art.webp",
+            "alt": "Colourful illustration of two cartoon ducks"
+          },
+          "page": "contact"
+        }
+      ]
+    },
+    {
+      "id": "education",
+      "type": "text",
+      "heading": "Education",
+      "variant": "body",
+      "body": "I studied at various institutions around the world and finished my Bachelor degree in industrial design at:\n\n- Academy of Fine Arts and Design, University of Ljubljana, Slovenia;\n\nI acquired another Bachelor and Magister Degree for painting at the same institution. I refined my creative experimental approach to art process, developing a hybrid for creating with mixing digital and classical techniques, with additional studies at:\n\n- Winchester School of Art, University of Southampton, United Kingdom;\n- Academia de belas-artes, University of Lisbon, Portugal;\n\nAt following institution I studied classical Balinese painting:\n\n- Pengosekan Community, Bali, Indonesia;\n\nAnd refined my skills for classical European painting, specifically studying old masters in oil on canvas at:\n\n- Angel Art Academy, Florence, Italy;\n\nI also acquired additional education and certificate in pedagogy and andragogy to be able to efficiently pass on the knowledge and skill in art to people of various generations, backgrounds and levels of knowledge at:\n\n- Faculty of Education, University of Maribor, Slovenia."
+    },
+    {
+      "id": "schools",
+      "type": "logos",
+      "items": [
+        {
+          "id": "aluo",
+          "image": {
+            "src": "/uploads/logos/aluo.webp",
+            "alt": "Academy of Fine Arts and Design, University of Ljubljana"
+          }
+        },
+        {
+          "id": "winchester",
+          "image": {
+            "src": "/uploads/logos/winchester.webp",
+            "alt": "Winchester School of Art, University of Southampton"
+          }
+        },
+        {
+          "id": "belas-artes",
+          "image": {
+            "src": "/uploads/logos/belas-artes.webp",
+            "alt": "Faculdade de Belas-Artes, University of Lisbon"
+          }
+        },
+        {
+          "id": "pengosekan",
+          "image": {
+            "src": "/uploads/logos/pengosekan.webp",
+            "alt": "Pengosekan painting community, Bali"
+          }
+        },
+        {
+          "id": "angel-academy",
+          "image": {
+            "src": "/uploads/logos/angel-academy.webp",
+            "alt": "Angel Academy of Art, Florence"
+          }
+        },
+        {
+          "id": "pedagoska-fakulteta",
+          "image": {
+            "src": "/uploads/logos/pedagoska-fakulteta.webp",
+            "alt": "Faculty of Education, University of Maribor"
+          }
+        }
+      ]
+    },
+    {
+      "id": "commission-cta",
+      "type": "cta",
+      "text": "A portrait, a mural, an animal you love.",
+      "sub": "Commission work · portraits · murals · animals",
+      "sealText": "✦ COMMISSIONS OPEN ✦ LET'S TALK ✦ PORTRAITS ✦ MURALS ",
+      "sealLabel": "Commissions open, contact the artist",
+      "page": "contact"
+    }
+  ]
+}
