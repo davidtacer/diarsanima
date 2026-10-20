@@ -12,7 +12,7 @@ const STRIPS = 6;
 type Props = {
   heading: string;
   background: string;
-  tiger: { src: string; alt: string };
+  tiger: { src: string; srcSet?: string; alt: string };
   tigerMobile: string;
   logo: { src: string; alt: string };
   explore: { label: string; href: string };
@@ -116,10 +116,13 @@ export default function GlitchStage({
       >
         <div className="animate-float">
           <picture>
-            <source media="(max-width: 767px)" srcSet={tigerMobile} />
+            <source media="(max-width: 767px)" srcSet={tigerMobile} sizes="42vh" />
             <img
               src={tiger.src}
+              srcSet={tiger.srcSet}
+              sizes="min(100vw, 190vh)"
               alt={tiger.alt}
+              fetchPriority="high"
               className="h-auto w-[min(100vw,190vh)] max-w-none opacity-50 drop-shadow-tiger max-md:h-[94vh] max-md:w-auto group-data-[jolt=true]:translate-x-1.5 group-data-[jolt=true]:drop-shadow-glitch"
             />
           </picture>

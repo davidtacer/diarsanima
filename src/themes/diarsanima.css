@@ -3,13 +3,14 @@
  * Tema je koda, ne vsebina: barve, pisave, sence, animacije. Bloki uporabljajo samo te žetone.
  * Vir: CGP priročnik DiArsanima.
  */
-@import "@fontsource/bodoni-moda/400.css";
-@import "@fontsource/bodoni-moda/400-italic.css";
-@import "@fontsource/bodoni-moda/700.css";
-@import "@fontsource/bodoni-moda/900.css";
-@import "@fontsource/jost/300.css";
-@import "@fontsource/jost/400.css";
-@import "@fontsource/jost/500.css";
+/* latinica je v src/themes/fonts.ts (next/font/local); tu samo latin-ext (č, š, ž), naloži se le po potrebi */
+@import "@fontsource/bodoni-moda/latin-ext-400.css";
+@import "@fontsource/bodoni-moda/latin-ext-400-italic.css";
+@import "@fontsource/bodoni-moda/latin-ext-700.css";
+@import "@fontsource/bodoni-moda/latin-ext-900.css";
+@import "@fontsource/jost/latin-ext-300.css";
+@import "@fontsource/jost/latin-ext-400.css";
+@import "@fontsource/jost/latin-ext-500.css";
 
 /* Podpis Inženirji.si: JetBrains Mono (OFL), podnabor samo za znake "inzenirji.s_" */
 @font-face {
@@ -51,8 +52,8 @@
   --shadow-paper-lift: 0 24px 60px rgb(40 30 20 / 0.25);
   --shadow-glitch: inset 0 0 0 9999px rgb(40 120 255 / 0.12);
 
-  --font-display: "Bodoni Moda", "Didot", serif;
-  --font-sans: "Jost", "Helvetica Neue", Arial, sans-serif;
+  --font-display: var(--font-bodoni), "Bodoni Moda", "Didot", serif;
+  --font-sans: var(--font-jost), "Jost", "Helvetica Neue", Arial, sans-serif;
 
   --ease-shatter: cubic-bezier(0.7, 0, 0.2, 1);
   --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);

@@ -32,6 +32,8 @@ export default function PaperLayout({
         src={srcOf(site.brand.watermark, 1280)}
         alt=""
         aria-hidden
+        fetchPriority="high"
+        decoding="async"
         className="pointer-events-none fixed right-[2vw] top-[-4vh] z-0 h-[112vh] w-auto max-w-none -rotate-[7deg] opacity-[0.06] max-md:right-[-34vw] max-md:h-[80vh]"
       />
       <div

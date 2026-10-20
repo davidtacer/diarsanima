@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useMemo, useRef, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import SmartLink from "@/components/SmartLink";
 
 const COLS = 6;
@@ -58,6 +58,10 @@ function makeTiles(seed: number): Tile[] {
 type Props = {
   heading: string;
   portrait: string;
+  /** manjša različica portreta za telefon (ozadje ne more imeti srcset) */
+  portraitMobile: string;
+  /** razmerje širina/višina portreta (izračunano ob buildu) */
+  ratio: number;
   logo: { src: string; alt: string };
   exploreLabel: string;
   backLabel: string;
@@ -67,32 +71,15 @@ type Props = {
 export default function ShatterStage({
   heading,
   portrait,
+  portraitMobile,
+  ratio,
   logo,
   exploreLabel,
   backLabel,
   links,
 }: Props) {
   const [open, setOpen] = useState(false);
-  const [box, setBox] = useState({ w: 0, h: 0 }); // velikost okvirja
-  const [img, setImg] = useState({ w: 1080, h: 1559 }); // naravna velikost portreta
-  const frame = useRef<HTMLDivElement>(null);
   const tiles = useMemo(() => makeTiles(7), []);
-
-  useEffect(() => {
-    const el = new Image();
-    el.onload = () =>
-      el.naturalWidth && setImg({ w: el.naturalWidth, h: el.naturalHeight });
-    el.src = portrait;
-  }, [portrait]);
-
-  useEffect(() => {
-    if (!frame.current) return;
-    const ro = new ResizeObserver(([e]) =>
-      setBox({ w: e.contentRect.width, h: e.contentRect.height }),
-    );
-    ro.observe(frame.current);
-    return () => ro.disconnect();
-  }, []);
 
   useEffect(() => {
     const onKey = (e: KeyboardEvent) => e.key === "Escape" && setOpen(false);
@@ -100,15 +87,10 @@ export default function ShatterStage({
     return () => window.removeEventListener("keydown", onKey);
   }, []);
 
-  // "background-size: cover" izračunan za celoten okvir, nato razrezan na ploščice
-  const cover = useMemo(() => {
-    const s = Math.max(box.w / img.w, box.h / img.h) || 0;
-    const w = img.w * s;
-    const h = img.h * s;
-    return { w, h, x: (w - box.w) / 2, y: (h - box.h) * 0.3 };
-  }, [box, img]);
-  const tw = box.w / COLS;
-  const th = box.h / ROWS;
+  // "background-size: cover" za celoten okvir, razrezan na ploščice — samo s CSS (container query enote),
+  // zato je portret viden takoj, brez čakanja na JavaScript.
+  const coverW = `max(100cqw, calc(100cqh * ${ratio}))`;
+  const coverH = `max(100cqh, calc(100cqw / ${ratio}))`;
 
   return (
     <div
@@ -119,8 +101,7 @@ export default function ShatterStage({
       {/* okvir s portretom; logotip in gumb sta pozicionirana glede nanj */}
       <div className="absolute left-1/2 top-[52%] -translate-x-1/2 -translate-y-1/2">
         <div
-          ref={frame}
-          className="relative h-[70vh] w-[min(44vw,640px)] animate-rise max-md:h-[58vh] max-md:w-[86vw]"
+          className="relative h-[70vh] [container-type:size] w-[min(44vw,640px)] animate-rise max-md:h-[58vh] max-md:w-[86vw]"
         >
           <div
             className="absolute inset-0 grid grid-cols-6 grid-rows-7"
@@ -145,12 +126,13 @@ export default function ShatterStage({
                   }}
                 >
                   <div
-                    className={`absolute -inset-[0.5px] bg-no-repeat ${open ? "animate-drift" : ""}`}
+                    className={`absolute -inset-[0.5px] bg-no-repeat [background-image:var(--portrait-sm)] md:[background-image:var(--portrait)] ${open ? "animate-drift" : ""}`}
                     style={
                       {
-                        backgroundImage: `url(${portrait})`,
-                        backgroundSize: `${cover.w}px ${cover.h}px`,
-                        backgroundPosition: `${-(cover.x + t.col * tw)}px ${-(cover.y + t.row * th)}px`,
+                        "--portrait": `url(${portrait})`,
+                        "--portrait-sm": `url(${portraitMobile})`,
+                        backgroundSize: `${coverW} ${coverH}`,
+                        backgroundPosition: `calc((${coverW} - 100cqw) / -2 - ${t.col} * 100cqw / ${COLS}) calc((${coverH} - 100cqh) * -0.3 - ${t.row} * 100cqh / ${ROWS})`,
                         animationDelay: `${1400 + t.delay}ms`,
                         "--drift": `${t.drift}s`,
                         "--ddx": `${t.ddx}px`,
@@ -168,6 +150,8 @@ export default function ShatterStage({
           <img
             src={logo.src}
             alt={logo.alt}
+            fetchPriority="high"
+            decoding="async"
             className="absolute bottom-full left-1/2 z-10 h-auto w-[clamp(220px,26vw,420px)] max-w-none -translate-x-1/2 translate-y-[38%] animate-rise transition-all duration-700 ease-shatter group-data-[open=true]:translate-y-[10%] group-data-[open=true]:opacity-0 group-data-[open=true]:blur-sm"
           />
 

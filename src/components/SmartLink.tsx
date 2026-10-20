@@ -47,7 +47,9 @@ export default function SmartLink({ href, children, ...rest }: Props) {
       ? new URL(href).pathname + new URL(href).search + new URL(href).hash
       : href;
     return (
-      <Link href={local} {...rest}>
+      // brez vnaprejšnjega nalaganja: statične strani so hitre same po sebi, prefetch pa bi prenesel
+      // še prednaložene slike povezanih strani (npr. tigra z intra) na vsaki strani
+      <Link href={local} prefetch={false} {...rest}>
         {children}
       </Link>
     );

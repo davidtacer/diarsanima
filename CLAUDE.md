@@ -40,8 +40,8 @@ Primer: *»Where mythical creations meet portraiture in different artistic mediu
 | `home` | `shatterMenu` | portret, ki se razbije v meni (`links`) |
 | `artwork` | `catalogue` | katalog sklopov; `plates` in `feature` so sklici `{ page, work }` na dela v galerijah |
 | `paintings`, `digital-artwork`, `murals` | `pageHeading`, `gallery`, `cta` | vsa dela; `navParent: "artwork"` |
-| `about-artist` | `pageHeading`, `text`, `cards`, `cta` | biografija, storitve, izobrazba |
-| `contact` | `pageHeading`, `contact` | e-pošta iz `site.json` |
+| `about-artist` | `pageHeading`, `text`, `cards`, `logos`, `cta` | biografija s sliko in podpisom, storitve, izobrazba z logotipi šol (alt logotipa = ime ustanove, gre tudi v JSON-LD `alumniOf`) |
+| `contact` | `pageHeading`, `contact` | e-pošta iz `site.json`; `illustration` / `illustrationMobile` = tiger |
 
 **Dodajanje dela:** delo dodaj v blok `gallery` na strani sklopa (id = naslov v kebab-case, npr. `lady-of-the-dawn`). Če naj se pojavi v katalogu na `artwork`, ga dodaj še v `plates` ali `feature` tega sklopa. Id dela, ki je uporabljen v katalogu, ne spreminjaj.
 

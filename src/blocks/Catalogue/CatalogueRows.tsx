@@ -7,6 +7,7 @@ type Focal = "center" | "top" | "bottom" | "left" | "right";
 type Plate = {
   id: string;
   src: string;
+  srcSet?: string;
   alt: string;
   caption: string;
   focal: Focal;
@@ -94,6 +95,8 @@ export default function CatalogueRows({
                   {/* eslint-disable-next-line @next/next/no-img-element */}
                   <img
                     src={w.src}
+                    srcSet={w.srcSet}
+                    sizes="96px"
                     alt={w.alt}
                     loading="lazy"
                     width={96}
@@ -123,6 +126,8 @@ export default function CatalogueRows({
                 {/* eslint-disable-next-line @next/next/no-img-element */}
                 <img
                   src={s.feature.src}
+                srcSet={s.feature.srcSet}
+                sizes="250px"
                   alt=""
                   loading="lazy"
                   className={`${focalClass[s.feature.focal]} aspect-[4/5] w-full object-cover`}

@@ -1,5 +1,5 @@
 import UploadImage from "@/components/UploadImage";
-import { srcOf } from "@/lib/images";
+import { srcOf, srcSetOf } from "@/lib/images";
 import type { BlockProps } from "@/lib/types";
 import type { ContactBlock } from "./schema";
 import SmartLink from "@/components/SmartLink";
@@ -58,7 +58,8 @@ export default function Contact({ block, ctx }: BlockProps<ContactBlock>) {
               {block.illustrationMobile && (
                 <source
                   media="(max-width: 767px)"
-                  srcSet={srcOf(block.illustrationMobile, 1280)}
+                  srcSet={srcSetOf(block.illustrationMobile) ?? srcOf(block.illustrationMobile, 1280)}
+                  sizes="(max-width: 767px) 360px"
                 />
               )}
               <UploadImage

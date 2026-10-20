@@ -7,6 +7,8 @@ const nextConfig: NextConfig = {
   output: process.env.NODE_ENV === "production" ? "export" : undefined,
   trailingSlash: true,
   images: { unoptimized: true },
+  // CSS vgrajen v HTML: brez dodatne zahteve, ki blokira izris
+  experimental: { inlineCss: true },
 };
 
 export default nextConfig;

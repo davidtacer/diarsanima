@@ -2,7 +2,7 @@ import Drips from "@/components/Drips";
 import RichText from "@/components/RichText";
 import Seal from "@/components/Seal";
 import UploadImage from "@/components/UploadImage";
-import { srcOf } from "@/lib/images";
+import { srcOf, srcSetOf } from "@/lib/images";
 import type { BlockProps } from "@/lib/types";
 import CatalogueRows from "./CatalogueRows";
 import type { CatalogueBlock } from "./schema";
@@ -22,7 +22,8 @@ export default function Catalogue({ block, ctx }: BlockProps<CatalogueBlock>) {
         const w = ctx.work(ref);
         return {
           id: `${ref.page}-${ref.work}`,
-          src: srcOf(w.image, 640),
+          src: srcOf(w.image, 320),
+          srcSet: srcSetOf(w.image),
           alt: w.image.alt,
           caption: `${w.number} ${w.title}`,
           focal: w.image.focal,
@@ -30,6 +31,7 @@ export default function Catalogue({ block, ctx }: BlockProps<CatalogueBlock>) {
       }),
       feature: feature && {
         src: srcOf(feature.image, 640),
+        srcSet: srcSetOf(feature.image),
         alt: feature.image.alt,
         caption: `${feature.number} ${feature.title}, ${feature.details}`,
         focal: feature.image.focal,

@@ -14,6 +14,13 @@ const production = branch ? branch === "main" : process.env.NEXT_PUBLIC_ENV === 
 const site = JSON.parse(fs.readFileSync(path.join(process.cwd(), "content/site.json"), "utf8")) as { url: string };
 
 const headers = [
+  // predpomnjenje: Next datoteke imajo hash v imenu (za vedno), slike lahko urejevalnik zamenja (teden + osvežitev v ozadju)
+  "/_next/static/*",
+  "  Cache-Control: public, max-age=31536000, immutable",
+  "",
+  "/uploads/*",
+  "  Cache-Control: public, max-age=604800, stale-while-revalidate=2592000",
+  "",
   "/uredi/*",
   "  X-Robots-Tag: noindex, nofollow",
   "",

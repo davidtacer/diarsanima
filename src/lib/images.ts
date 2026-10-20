@@ -4,7 +4,7 @@ import { imageSize } from "image-size";
 import type { Image } from "@/schema/common";
 
 const PUBLIC = path.join(process.cwd(), "public");
-export const VARIANTS = [640, 1280, 2400] as const;
+export const VARIANTS = [320, 640, 1280, 2400] as const;
 
 const exists = (p: string) => fs.existsSync(path.join(PUBLIC, p));
 const variantPath = (src: string, w: number) => src.replace(/\.(webp|png|jpe?g|avif)$/i, `-${w}.webp`);

@@ -43,6 +43,8 @@ export default function Seal({
         alt=""
         width={84}
         height={84}
+        loading="lazy"
+        decoding="async"
         className="w-[84px] opacity-80 invert transition-transform duration-700 ease-shatter group-hover:-rotate-12 group-hover:scale-105"
       />
     </SmartLink>
