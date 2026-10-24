@@ -8,6 +8,7 @@ import path from "node:path";
 import { ZodError } from "zod";
 import { pageSchema, type Page } from "../src/schema/page";
 import { siteSchema, type Site } from "../src/schema/site";
+import { editorConfigSchema } from "../src/schema/editor-config";
 
 type Issue = { file: string; path: string; message: string };
 const issues: Issue[] = [];
@@ -168,6 +169,15 @@ if (base.site) {
       if (a !== b) add(tp.file, "", "prevod se mora ujemati z izvirnikom v id, type, slikah, povezavah, datumih in vrstnem redu");
     }
   }
+}
+
+// editor.config.json: povezava z urejevalnikom Inženirji.si (koda, ne vsebina)
+{
+  const file = path.join(process.cwd(), "editor.config.json");
+  const editor = parse(editorConfigSchema, file);
+  if (editor && base.site && editor.urls.live !== base.site.url.replace(/\/$/, ""))
+    add(file, "urls.live", `se mora ujemati s content/site.json → url (${base.site.url})`);
+  if (base.files.has("uredi")) add(path.join(ROOT, "pages/uredi.json"), "slug", "stran uredi je rezervirana za urejevalnik");
 }
 
 if (process.argv.includes("--json")) {

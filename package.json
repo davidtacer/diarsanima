@@ -12,7 +12,8 @@
     "uploads": "tsx scripts/optimize-uploads.ts",
     "uploads:wp": "tsx scripts/fetch-wp-uploads.ts",
     "typecheck": "tsx scripts/prebuild.ts && tsc --noEmit",
-    "check": "yarn validate && yarn catalog && yarn typecheck && yarn lint && yarn build"
+    "check": "yarn validate && yarn catalog && yarn schema --check && yarn typecheck && yarn lint && yarn build",
+    "schema": "tsx scripts/export-schema.ts"
   },
   "dependencies": {
     "@fontsource/bodoni-moda": "^5.3.0",

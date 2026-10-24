@@ -1,0 +1,25 @@
+{
+  // Cloudflare Workers (static assets only, no Worker code). Two Workers per site (inzenirji-widget docs/runbooks/upgrade-existing-site.md):
+  //   diarsanima      builds main → https://www.diarsanima.com   (deploy: npx wrangler deploy)
+  //   diarsanima-dev  builds dev  → https://dev.diarsanima.com   (deploy: npx wrangler deploy --env dev,
+  //                   build variable SITE_ENV=dev → noindex, no sitemap)
+  // The live domains (www.diarsanima.com, diarsanima.com → www redirect) are attached in the Cloudflare dashboard.
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "diarsanima",
+  "compatibility_date": "2026-10-01",
+  "assets": {
+    "directory": "./out",
+    "html_handling": "auto-trailing-slash",
+    "not_found_handling": "404-page"
+  },
+  "observability": { "enabled": true },
+  "env": {
+    "dev": {
+      // No workers.dev or preview URLs: Chrome flags names containing the client domain as fakes.
+      "workers_dev": false,
+      "preview_urls": false,
+      "routes": [{ "pattern": "dev.diarsanima.com", "custom_domain": true }],
+      "vars": { "SITE_ENV": "dev" }
+    }
+  }
+}

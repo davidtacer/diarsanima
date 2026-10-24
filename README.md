@@ -31,9 +31,9 @@ yarn uploads public/uploads/<datoteka>   # nova slika → WebP + velikosti
 
 ## Gostovanje
 
-Cloudflare Pages po **`docs/NAMESTITEV-UREJEVALNIKA.md`**: production branch `main`, preview samo `dev`, build `yarn build`, output `out`, `NODE_VERSION=22`.
+Cloudflare **Workers** (`wrangler.jsonc`): Worker `diarsanima` gradi `main` (`yarn build`, `npx wrangler deploy`), Worker `diarsanima-dev` gradi `dev` (`npx wrangler deploy --env dev`, build variable `SITE_ENV=dev`) na `https://dev.diarsanima.com`. Urejevalnik Inženirji.si: `editor.config.json`, `content/schema.json` (`yarn schema`), `/uredi` zapiše `scripts/postbuild.ts`. Postopek: `docs/runbooks/upgrade-existing-site.md` v `davidtacer/inzenirji-widget`.
 `scripts/postbuild.ts` glede na `CF_PAGES_BRANCH` zapiše `_headers`, `robots.txt` in sitemap (testna stran je skrita).
-Urejevalnik: `/uredi` (iframe na uredi.inzenirji.si, `SITE_ID` v `src/config/site-id.ts`).
+Urejevalnik: `/uredi` zapiše `scripts/postbuild.ts` (samo `embed.js` z `uredi.inzenirji.si`, `data-site` = `siteId` iz `editor.config.json`; ko je `enabled: false`, stran »kmalu«).
 
 ## Git
 

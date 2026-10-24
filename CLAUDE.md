@@ -2,7 +2,7 @@
 
 > Ta datoteka je za **AI urejevalnik** (urejanje vsebine s pogovorom).
 > Agenti, ki gradijo ali spreminjajo kodo, morajo najprej prebrati **`docs/PRAVILA-GRADNJE.md`** in se ga držati.
-> Namestitev na Cloudflare Pages, domene in povezava z urejevalnikom: **`docs/NAMESTITEV-UREJEVALNIKA.md`**.
+> Gostovanje (Cloudflare Workers: `diarsanima` = `main`, `diarsanima-dev` = `dev` na `dev.diarsanima.com`) in povezava z urejevalnikom: `wrangler.jsonc`, `editor.config.json` in runbook `docs/runbooks/upgrade-existing-site.md` v repozitoriju `davidtacer/inzenirji-widget`. Urejevalnik bere pravila iz `content/schema.json` (`notes`, generira `yarn schema` iz `scripts/export-schema.ts`): ko spremeniš pravila spodaj, posodobi tudi tam.
 
 ## Splošna pravila
 

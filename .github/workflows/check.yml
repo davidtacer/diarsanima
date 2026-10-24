@@ -16,4 +16,5 @@ jobs:
       - run: yarn install --frozen-lockfile
       - run: yarn check
         env:
-          CF_PAGES_BRANCH: ${{ github.ref_name }}
+          # main (or a PR into main) builds the live site, everything else the test site (src/config/env.ts)
+          SITE_ENV: ${{ (github.ref_name == 'main' || github.base_ref == 'main') && 'live' || 'dev' }}

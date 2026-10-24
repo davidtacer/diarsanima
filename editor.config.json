@@ -1,0 +1,16 @@
+{
+  "siteId": "diarsanima",
+  "siteName": "DiArsanima",
+  "repo": "davidtacer/diarsanima",
+  "branches": {
+    "dev": "dev",
+    "main": "main"
+  },
+  "urls": {
+    "live": "https://www.diarsanima.com",
+    "dev": "https://dev.diarsanima.com"
+  },
+  "editorUrl": "https://uredi.inzenirji.si",
+  "guideVersion": "1.3",
+  "enabled": true
+}

@@ -1,3 +1,5 @@
-/** Identifikator stranke v urejevalniku (uredi.inzenirji.si). Koda, ne vsebina. Enak kot v adminu urejevalnika. */
-export const SITE_ID = "diarsanima";
-export const EDITOR_URL = "https://uredi.inzenirji.si";
+import editorConfig from "../../editor.config.json";
+
+/** Identifikator stranke v urejevalniku (uredi.inzenirji.si). Vir: editor.config.json. Koda, ne vsebina. */
+export const SITE_ID = editorConfig.siteId;
+export const EDITOR_URL = editorConfig.editorUrl;

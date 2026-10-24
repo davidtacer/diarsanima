@@ -1,5 +1,7 @@
 # Namestitev urejevalnika na novo stran stranke
 
+> **Zastarelo (24. 10. 2026).** Strani so zdaj na Cloudflare Workers, urejevalnik je `https://uredi.inzenirji.si`, stran se registrira iz CRM-ja. Velja runbook `docs/runbooks/upgrade-existing-site.md` v repozitoriju `davidtacer/inzenirji-widget` in `docs/technical/cloudflare.md` v `davidtacer/inzenirji-crm`. Spodnje besedilo je samo zgodovina.
+
 Za koga: David (ročni koraki) in AI inženirji (koraki v kodi).
 Gostovanje: **Cloudflare Pages** (odločeno 20. 10. 2026).
 Lokacija v repozitoriju predloge: `docs/NAMESTITEV-UREJEVALNIKA.md`. Gre skupaj z `docs/PRAVILA-GRADNJE.md`.

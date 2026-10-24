@@ -1,14 +1,14 @@
 import "server-only";
 import type { Metadata } from "next";
 import { BUILD_UPDATED_AT } from "@/config/build";
+import { isLive } from "@/config/env";
 import type { Page } from "@/schema/page";
 import type { Site } from "@/schema/site";
 import { getBaseSite, getPage, hrefFor, listPages } from "./content";
 import { sizeOf, srcOf } from "./images";
 
-/** Produkcija: Cloudflare gradi vejo main (CF_PAGES_BRANCH) ali lokalno NEXT_PUBLIC_ENV=production. */
-export const isProduction = () =>
-  process.env.CF_PAGES_BRANCH ? process.env.CF_PAGES_BRANCH === "main" : process.env.NEXT_PUBLIC_ENV === "production";
+/** Produkcija (prava stran) ali testna stran: pravilo v src/config/env.ts. */
+export const isProduction = () => isLive();
 
 const abs = (site: Site, path: string) => new URL(path, site.url).toString();
 
